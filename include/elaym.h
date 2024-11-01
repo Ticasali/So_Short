@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 23:00:53 by ticasali          #+#    #+#             */
-/*   Updated: 2024/11/01 15:25:22 by ticasali         ###   ########.fr       */
+/*   Updated: 2024/11/01 21:20:51 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,27 @@ typedef struct  Img_s
     struct  Img_s   *next;
 }Img_t;
 
+typedef struct  Block_s
+{
+    char    c;
+    int     Xmin;
+    int     Xmax;
+    int     Ymin;
+    int     Ymax;
+    void    *img;
+    struct  Block_s *next;
+}Block_t;
+
+typedef struct  Player_s
+{
+    int     Xmin;
+    int     Xmax;
+    int     Ymax;
+    int     Ymin;
+    int     Speed;
+    void    *img;
+}Player_t;
+
 typedef struct  Anim_s
 {
     char    c;
@@ -54,10 +75,13 @@ typedef struct  Anim_s
 
 typedef struct  Control_s
 {
+    int     Statement;
     Wind_t  *WS;
     Map_t   *MS;
     Img_t   *IS;
     Anim_t  *AS;
+    Block_t *BS;
+    Player_t*PS;
 }Control_t;
 
 char    **load_tab(const char *path);

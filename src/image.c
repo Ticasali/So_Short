@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 01:54:34 by ticasali          #+#    #+#             */
-/*   Updated: 2024/11/01 15:24:03 by ticasali         ###   ########.fr       */
+/*   Updated: 2024/11/01 21:28:46 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void    print_map(Control_t *Cts)
             }
         }
     }
+    mlx_put_image_to_window(Cts->WS->ml, Cts->WS->win, Cts->PS->img, Cts->PS->Xmin, Cts->PS->Ymin);
 }
 
 int    ft_print_time(Control_t *Cts)
