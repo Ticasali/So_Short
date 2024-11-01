@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 23:00:53 by ticasali          #+#    #+#             */
-/*   Updated: 2024/11/01 00:35:34 by ticasali         ###   ########.fr       */
+/*   Updated: 2024/11/01 02:18:27 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,18 @@ typedef struct  Map_s
     int     Y;
 }Map_t;
 
+typedef struct  Img_s
+{
+    char    c;
+    void    *img;
+    struct  Img_s   *next;
+}Img_t;
+
 typedef struct  Control_s
 {
     Wind_t  *WS;
     Map_t   *MS;
+    Img_t   *IS;
 }Control_t;
 
 char    **load_tab(const char *path);
@@ -54,6 +62,8 @@ void    ft_move_up(Map_t *Data);
 void    ft_move_down(Map_t *Data);
 void    ft_move_right(Map_t *Data);
 void    ft_move_left(Map_t *Data);
+void    load_image(Img_t *Im, Wind_t *Ws);
+void    print_map(Control_t *Cts);
 void    ft_puttab(char **map);
 void    ft_putstr(char *str);
 void    ft_putchar(char c);

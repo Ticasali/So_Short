@@ -6,7 +6,7 @@
 #    By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 20:39:27 by ticasali          #+#    #+#              #
-#    Updated: 2024/10/31 17:17:34 by ticasali         ###   ########.fr        #
+#    Updated: 2024/11/01 02:18:02 by ticasali         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ SRC		=	src/main.c		\
 			src/tools.c		\
 			src/tool2.c 	\
 			src/event.c		\
-			src/move.c
+			src/move.c		\
+			src/image.c
 
 OBJ		:=	$(SRC:%.c=%.o)
 
