@@ -76,7 +76,6 @@ char    **load_tab(const char *path)
     fd = open(path, O_RDONLY);
     while (read(fd, buf, 1) > 0)
         val++;
-    printf("%d\n", val);
     close(fd);
     ret = malloc(sizeof(char) * val + 1);
     fd = open(path, O_RDONLY);

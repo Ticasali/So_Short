@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 20:20:11 by ticasali          #+#    #+#             */
-/*   Updated: 2024/11/01 02:27:41 by ticasali         ###   ########.fr       */
+/*   Updated: 2024/11/01 02:38:32 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ int     main(int argc, char **argv)
     Cts->MS = Ms;
     Cts->IS = Is;
     map = load_tab(argv[1]);
-    ft_puttab(map);
-    ft_putchar('\n');
     Ms->map = map;
     Ms->X = ft_find_player(map, 'X');
     Ms->Y = ft_find_player(map, 'Y');

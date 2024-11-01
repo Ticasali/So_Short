@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 23:06:39 by ticasali          #+#    #+#             */
-/*   Updated: 2024/11/01 00:28:25 by ticasali         ###   ########.fr       */
+/*   Updated: 2024/11/01 02:38:55 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void    ft_move_up(Map_t *Data)
         Data->map[Data->Y - 1][Data->X] = 'P';
         Data->Y--;
     }
-    ft_puttab(Data->map);
 }
 
 void    ft_move_down(Map_t *Data)
@@ -31,7 +30,6 @@ void    ft_move_down(Map_t *Data)
         Data->map[Data->Y + 1][Data->X] = 'P';
         Data->Y++;
     }
-    ft_puttab(Data->map);
 }
 
 void    ft_move_left(Map_t *Data)
@@ -42,7 +40,6 @@ void    ft_move_left(Map_t *Data)
         Data->map[Data->Y][Data->X - 1] = 'P';
         Data->X--;
     }
-    ft_puttab(Data->map);
 }
 
 void    ft_move_right(Map_t *Data)
@@ -53,5 +50,4 @@ void    ft_move_right(Map_t *Data)
         Data->map[Data->Y][Data->X + 1] = 'P';
         Data->X++;
     }
-    ft_puttab(Data->map);
 }
