@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 17:17:09 by ticasali          #+#    #+#             */
-/*   Updated: 2024/10/31 17:19:56 by ticasali         ###   ########.fr       */
+/*   Updated: 2024/11/01 00:51:26 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,9 @@ int     ft_tablen(char **tab)
     while (tab[++ret])
         ;
     return (ret);
+}
+
+void    ft_print_tab(Control_t *Cts)
+{
+    
 }
