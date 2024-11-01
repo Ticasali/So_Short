@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 01:54:34 by ticasali          #+#    #+#             */
-/*   Updated: 2024/11/01 14:58:30 by ticasali         ###   ########.fr       */
+/*   Updated: 2024/11/01 15:24:03 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void    load_image(Img_t    *Im, Wind_t *Ws)
     Im->next = malloc(sizeof(Img_t));
     Im = Im->next;
     Im->c = 'E';
-    Im->img = mlx_xpm_file_to_image(Ws->ml, "./texture/Grass32.xpm", &w, &h);
+    Im->img = mlx_xpm_file_to_image(Ws->ml, "./texture/End.xpm", &w, &h);
     Im->next = malloc(sizeof(Img_t));
     Im->next = NULL;
 }
@@ -45,13 +45,19 @@ void    load_anime(Anim_t  *Am, Wind_t *Ws)
     w = 32;
     h = 32;
     Am->t = 0;
-    Am->tm = 4;
+    Am->tm = 10;
     Am->c = 'C';
-    Am->img = malloc(sizeof(void *) * 4);
+    Am->img = malloc(sizeof(void *) * 10);
     Am->img[0] = mlx_xpm_file_to_image(Ws->ml, "./texture/Icon1.xpm", &w, &h);
     Am->img[1] = mlx_xpm_file_to_image(Ws->ml, "./texture/Icon2.xpm", &w, &h);
-    Am->img[2] = mlx_xpm_file_to_image(Ws->ml, "./texture/Icon3.xpm", &w, &h);
-    Am->img[3] = mlx_xpm_file_to_image(Ws->ml, "./texture/Icon4.xpm", &w, &h);
+    Am->img[2] = mlx_xpm_file_to_image(Ws->ml, "./texture/Icon2.xpm", &w, &h);
+    Am->img[3] = mlx_xpm_file_to_image(Ws->ml, "./texture/Icon2.xpm", &w, &h);
+    Am->img[4] = mlx_xpm_file_to_image(Ws->ml, "./texture/Icon2.xpm", &w, &h);
+    Am->img[5] = mlx_xpm_file_to_image(Ws->ml, "./texture/Icon3.xpm", &w, &h);
+    Am->img[6] = mlx_xpm_file_to_image(Ws->ml, "./texture/Icon3.xpm", &w, &h);
+    Am->img[7] = mlx_xpm_file_to_image(Ws->ml, "./texture/Icon3.xpm", &w, &h);
+    Am->img[8] = mlx_xpm_file_to_image(Ws->ml, "./texture/Icon3.xpm", &w, &h);
+    Am->img[9] = mlx_xpm_file_to_image(Ws->ml, "./texture/Icon4.xpm", &w, &h);
 }
 
 void    print_map(Control_t *Cts)

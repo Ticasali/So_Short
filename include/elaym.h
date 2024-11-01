@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 23:00:53 by ticasali          #+#    #+#             */
-/*   Updated: 2024/11/01 14:42:39 by ticasali         ###   ########.fr       */
+/*   Updated: 2024/11/01 15:25:22 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,10 @@ int     ft_event(int keycode, Control_t *Cts);
 int     ft_print_time(Control_t *Cts);
 int     ft_strlen(char *str);
 int     ft_tablen(char **tab);
-void    ft_move_up(Map_t *Data);
-void    ft_move_down(Map_t *Data);
-void    ft_move_right(Map_t *Data);
-void    ft_move_left(Map_t *Data);
+int     ft_move_up(Map_t *Data);
+int     ft_move_down(Map_t *Data);
+int     ft_move_right(Map_t *Data);
+int     ft_move_left(Map_t *Data);
 void    load_image(Img_t *Im, Wind_t *Ws);
 void    load_anime(Anim_t *Am, Wind_t *Ws);
 void    print_map(Control_t *Cts);
