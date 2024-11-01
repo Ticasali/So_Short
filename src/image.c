@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 01:54:34 by ticasali          #+#    #+#             */
-/*   Updated: 2024/11/01 02:30:58 by ticasali         ###   ########.fr       */
+/*   Updated: 2024/11/01 14:58:30 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,27 @@ void    load_image(Img_t    *Im, Wind_t *Ws)
     Im->img = mlx_xpm_file_to_image(Ws->ml, "./texture/Player32.xpm", &w, &h);
     Im->next = malloc(sizeof(Img_t));
     Im = Im->next;
-    Im->c = 'C';
-    Im->img = mlx_xpm_file_to_image(Ws->ml, "./texture/Grass32.xpm", &w, &h);
-    Im->next = malloc(sizeof(Img_t));
-    Im = Im->next;
     Im->c = 'E';
     Im->img = mlx_xpm_file_to_image(Ws->ml, "./texture/Grass32.xpm", &w, &h);
     Im->next = malloc(sizeof(Img_t));
     Im->next = NULL;
+}
+
+void    load_anime(Anim_t  *Am, Wind_t *Ws)
+{
+    int     w;
+    int     h;
+
+    w = 32;
+    h = 32;
+    Am->t = 0;
+    Am->tm = 4;
+    Am->c = 'C';
+    Am->img = malloc(sizeof(void *) * 4);
+    Am->img[0] = mlx_xpm_file_to_image(Ws->ml, "./texture/Icon1.xpm", &w, &h);
+    Am->img[1] = mlx_xpm_file_to_image(Ws->ml, "./texture/Icon2.xpm", &w, &h);
+    Am->img[2] = mlx_xpm_file_to_image(Ws->ml, "./texture/Icon3.xpm", &w, &h);
+    Am->img[3] = mlx_xpm_file_to_image(Ws->ml, "./texture/Icon4.xpm", &w, &h);
 }
 
 void    print_map(Control_t *Cts)
@@ -58,8 +71,25 @@ void    print_map(Control_t *Cts)
             {
                 if (CpI->c == Cts->MS->map[Cty][Ctx])
                     mlx_put_image_to_window(Cts->WS->ml, Cts->WS->win, CpI->img, (32 * Ctx), (32 * Cty));
+                if (Cts->AS->c == Cts->MS->map[Cty][Ctx])
+                {
+                    if (Cts->AS->t < Cts->AS->tm)
+                    {
+                        mlx_put_image_to_window(Cts->WS->ml, Cts->WS->win, Cts->AS->img[Cts->AS->t], (32 * Ctx), (32 * Cty));
+                        Cts->AS->t++;
+                    }
+                    else
+                        Cts->AS->t = 0;
+                }
                 CpI = CpI->next;
             }
         }
     }
+}
+
+int    ft_print_time(Control_t *Cts)
+{
+    sleep(0.1);
+    print_map(Cts);
+    return (0);
 }
