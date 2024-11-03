@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 01:54:34 by ticasali          #+#    #+#             */
-/*   Updated: 2024/11/01 21:28:46 by ticasali         ###   ########.fr       */
+/*   Updated: 2024/11/03 03:44:28 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,29 @@ void    print_map(Control_t *Cts)
     Img_t   *CpI;
 
     Cty = -1;
+	if (Cts->PS->Up == 1)
+	{
+		if (Cts->PS->Up_Val < Cts->PS->Ymax)
+		{
+			ft_move_u(Cts);
+			Cts->PS->Ymin -= 1;
+			Cts->PS->Ymax -= 1;
+		}
+		else
+			Cts->PS->Up = -1;
+	}
+	else
+	{
+		if (ft_move_d(Cts) == 1)
+			Cts->PS->Up = 0;
+		else
+			Cts->PS->Up = -1;
+	}
+	if (Cts->PS->Up == -1)
+	{
+		Cts->PS->Ymin += 1;
+		Cts->PS->Ymax += 1;
+	}
     while (Cts->MS->map[++Cty] != NULL)
     {
         Ctx = -1;

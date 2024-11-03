@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 21:13:43 by ticasali          #+#    #+#             */
-/*   Updated: 2024/11/01 21:23:13 by ticasali         ###   ########.fr       */
+/*   Updated: 2024/11/03 03:30:38 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void    load_player(Player_t *Pl, Wind_t *Ws, int x, int y)
     Pl->Xmax = x * h + h;
     Pl->Ymin = y * h;
     Pl->Ymax = y * h + h;
-    Pl->Speed = 1;
+    Pl->Speed = 5;
+	Pl->Up = 0;
+	Pl->Up_Val = -1;
     Pl->img = mlx_xpm_file_to_image(Ws->ml, "./texture/Player32.xpm", &h, &h);
 }

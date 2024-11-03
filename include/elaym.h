@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 23:00:53 by ticasali          #+#    #+#             */
-/*   Updated: 2024/11/01 21:20:51 by ticasali         ###   ########.fr       */
+/*   Updated: 2024/11/03 03:13:59 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ typedef struct  Player_s
     int     Ymax;
     int     Ymin;
     int     Speed;
+	int 	Up;
+	int		Up_Val;
     void    *img;
 }Player_t;
 
@@ -97,9 +99,16 @@ int     ft_move_up(Map_t *Data);
 int     ft_move_down(Map_t *Data);
 int     ft_move_right(Map_t *Data);
 int     ft_move_left(Map_t *Data);
+int		ft_move_r(Control_t *Cts);
+int		ft_move_l(Control_t *Cts);
+int		ft_move_d(Control_t *Cts);
+int		ft_move_u(Control_t *Cts);
 void    load_image(Img_t *Im, Wind_t *Ws);
 void    load_anime(Anim_t *Am, Wind_t *Ws);
+void	load_block(Wind_t *Ws, Block_t *Bl, char **map, char c);
+void	load_player(Player_t *Ps, Wind_t *Ws, int x, int y);
 void    print_map(Control_t *Cts);
+void	node_block(Wind_t *Ws, Block_t *Bl, char **map, int y, int x);
 void    ft_puttab(char **map);
 void    ft_putstr(char *str);
 void    ft_putchar(char c);
