@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 23:06:39 by ticasali          #+#    #+#             */
-/*   Updated: 2024/11/03 03:34:01 by ticasali         ###   ########.fr       */
+/*   Updated: 2024/11/03 04:54:16 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,7 @@ int		ft_move_u(Control_t *Cts)
 		{
 			Cts->PS->Ymin = Cpy->Ymax;
 			Cts->PS->Ymax = Cts->PS->Ymin + 32;
+			Cts->PS->Up = -1;
 			return (1);
 		}
 		Cpy = Cpy->next;

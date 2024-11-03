@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 21:11:01 by ticasali          #+#    #+#             */
-/*   Updated: 2024/11/03 03:41:18 by ticasali         ###   ########.fr       */
+/*   Updated: 2024/11/03 04:58:00 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int     ft_event(int keycode, Control_t *Cts)
 	{
 		if (Cts->PS->Up == 0)
 		{
-			Cts->PS->Up_Val = Cts->PS->Ymax - 70;
+			Cts->PS->Up_Val = Cts->PS->Ymax - 75;
 			Cts->PS->Up = 1;
 		}
 		if (ft_move_u(Cts) == 0)
