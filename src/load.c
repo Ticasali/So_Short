@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 23:02:53 by ticasali          #+#    #+#             */
-/*   Updated: 2024/11/01 00:10:30 by ticasali         ###   ########.fr       */
+/*   Updated: 2024/11/05 23:40:34 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ char    **ft_split(char *str)
 
 char    **load_tab(const char *path)
 {
-    int val;
-    int fd;
+	int val;
+	int fd;
     char buf[1];
     char *ret;
     val = 0;

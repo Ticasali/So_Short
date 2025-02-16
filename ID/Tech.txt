@@ -1,0 +1,31 @@
+Gravité + inertie
+Player centrée + decalage de la map
+//Multi Duo
+Generation Préocedurale avec Seed
+Systeme de Save
+Stat
+Swap entre les 2 mondes Opti
+
+Stat Player:
+Hp:
+Speed:
+Bool Type:
+
+
+SCENE:
+Gameplay
+Point&Click Discussion (Hitbix choix)
+Menu:
+-Inventaire
+-Map
+-Control
+-Save/Quitter/Pause
+-Cinematique Début/Fin Jeux et Quete Boss
+
+Save a chaque changement de Niveau ou Discussion
+
+Parralax:
+1er plan décort Rand
+2eme plan Player & Plateform Map
+3eme plan Parralax décort Rand
+4eme plan Fond décort PreSet

@@ -1,0 +1,1 @@
+Animation pour les détails rend aleatoire avec la seed

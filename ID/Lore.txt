@@ -1,0 +1,15 @@
+H début depressif
+F début joyeuse
+Pouvoir de l'ame	Amour / Haine
+
+(Monde de la vie (Foret) / Monde de la mort) ID swap
+SWAP DE MONDE A CHAQUE SWAP DE PLAYER
+
+3 Villages
+Passé Futur (Culture, Valeur / Technologie, Argent) (Esprit / Technologie)
+Amour Haine (Sentiments) (Lumiere / Ombre)
+
+
+1 Ville
+Humain Bon / Mauvais
+Amour Haine (Sentiments) (Lumiere / Ombre)
