@@ -13,3 +13,9 @@ Amour Haine (Sentiments) (Lumiere / Ombre)
 1 Ville
 Humain Bon / Mauvais
 Amour Haine (Sentiments) (Lumiere / Ombre)
+
+3 perso principaux
+Le 1er meurt dans le tuto
+1 100% ame
+2 100% ame
+3 0% ame Mort
