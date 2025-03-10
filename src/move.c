@@ -5,168 +5,92 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/30 23:06:39 by ticasali          #+#    #+#             */
-/*   Updated: 2024/11/03 04:54:16 by ticasali         ###   ########.fr       */
+/*   Created: 2025/03/07 03:29:40 by ticasali          #+#    #+#             */
+/*   Updated: 2025/03/08 02:40:43 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/elaym.h"
+#include "../include/Elaym.h"
 
-/*
-int    ft_move_up(Map_t *Data)
-{
-    if (Data->map[Data->Y - 1][Data->X] == '0' || Data->map[Data->Y - 1][Data->X] == 'C')
-    {
-        Data->map[Data->Y][Data->X] = '0';
-        Data->map[Data->Y - 1][Data->X] = 'P';
-        Data->Y--;
-    }
-    else if (Data->map[Data->Y - 1][Data->X] == 'E')
-    {
-        Data->map[Data->Y][Data->X] = '0';
-        Data->map[Data->Y - 1][Data->X] = 'E';
-        Data->Y--;
-    }
-    if (Data->map[Data->Y][Data->X] == 'E')
-        return (1);
-    return (0);
-}
-
-int    ft_move_down(Map_t *Data)
-{
-    if (Data->map[Data->Y + 1][Data->X] == '0' || Data->map[Data->Y + 1][Data->X] == 'C')
-    {
-        Data->map[Data->Y][Data->X] = '0';
-        Data->map[Data->Y + 1][Data->X] = 'P';
-        Data->Y++;
-    }
-    else if (Data->map[Data->Y + 1][Data->X] == 'E')
-    {
-        Data->map[Data->Y][Data->X] = '0';
-        Data->map[Data->Y + 1][Data->X] = 'E';
-        Data->Y++;
-    }
-    if (Data->map[Data->Y][Data->X] == 'E')
-        return (1);
-    return (0);
-}
-
-int    ft_move_left(Map_t *Data)
-{
-    if (Data->map[Data->Y][Data->X - 1] == '0' || Data->map[Data->Y][Data->X - 1] == 'C')
-    {
-        Data->map[Data->Y][Data->X] = '0';
-        Data->map[Data->Y][Data->X - 1] = 'P';
-        Data->X--;
-    }
-    else if (Data->map[Data->Y][Data->X - 1] == 'E')
-    {
-        Data->map[Data->Y][Data->X] = '0';
-        Data->map[Data->Y][Data->X - 1] = 'E';
-        Data->X--;
-    }
-    if (Data->map[Data->Y][Data->X] == 'E')
-        return (1);
-    return (0);
-}
-
-int    ft_move_right(Map_t *Data)
-{
-    if (Data->map[Data->Y][Data->X + 1] == '0' || Data->map[Data->Y][Data->X + 1] == 'C')
-    {
-        Data->map[Data->Y][Data->X] = '0';
-        Data->map[Data->Y][Data->X + 1] = 'P';
-        Data->X++;
-    }
-    else if (Data->map[Data->Y][Data->X + 1] == 'E')
-    {
-        Data->map[Data->Y][Data->X] = '0';
-        Data->map[Data->Y][Data->X + 1] = 'E';
-        Data->X++;
-    }
-    if (Data->map[Data->Y][Data->X] == 'E')
-        return (1);
-    return (0);
-}
-*/
-
-int		ft_move_r(Control_t *Cts)
+bool		ft_move_r(Control_t *Cts)
 {
 	Block_t *Cpy;
 
-	Cpy = Cts->BS;
+	Cpy = Cts->BlS;
 	while (Cpy != NULL)
 	{
-		if ((((Cts->PS->Xmax + Cts->PS->Speed) >= Cpy->Xmin) && ((Cts->PS->Xmax + Cts->PS->Speed) < Cpy->Xmax))
-		&& ((Cts->PS->Ymin >= Cpy->Ymin && Cts->PS->Ymin < Cpy->Ymax)
-		|| (Cts->PS->Ymax > Cpy->Ymin && Cts->PS->Ymax <= Cpy->Ymax)))
+		if ((((Cts->PS->XmaxH + Cts->PS->Speed) >= Cpy->Xmin)
+		&& ((Cts->PS->XmaxH + Cts->PS->Speed) < Cpy->Xmax))
+		&& ((Cts->PS->YminH >= Cpy->Ymin && Cts->PS->YminH < Cpy->Ymax)
+		|| (Cts->PS->YmaxH > Cpy->Ymin && Cts->PS->YmaxH <= Cpy->Ymax)))
 		{
-			Cts->PS->Xmax = Cpy->Xmin;
-			Cts->PS->Xmin = Cts->PS->Xmax - 32;
-			return (1);
+			Cts->PS->XmaxH = Cpy->Xmin;
+			Cts->PS->XminH = Cts->PS->XmaxH - 32;
+			return (true);
 		}
 		Cpy = Cpy->next;
 	}
-	return (0);
+	return (false);
 }
 
-int		ft_move_l(Control_t *Cts)
+bool	ft_move_l(Control_t *Cts)
 {
 	Block_t *Cpy;
 
-	Cpy = Cts->BS;
+	Cpy = Cts->BlS;
 	while (Cpy != NULL)
 	{
-		if ((((Cts->PS->Xmin - Cts->PS->Speed) <= Cpy->Xmax) && ((Cts->PS->Xmin - Cts->PS->Speed) > Cpy->Xmin))
-		&& ((Cts->PS->Ymin >= Cpy->Ymin && Cts->PS->Ymin < Cpy->Ymax)
-		|| (Cts->PS->Ymax > Cpy->Ymin && Cts->PS->Ymax <= Cpy->Ymax)))
+		if ((((Cts->PS->XminH - Cts->PS->Speed) <= Cpy->Xmax)
+		&& ((Cts->PS->XminH - Cts->PS->Speed) > Cpy->Xmin))
+		&& ((Cts->PS->YminH >= Cpy->Ymin && Cts->PS->YminH < Cpy->Ymax)
+		|| (Cts->PS->YmaxH > Cpy->Ymin && Cts->PS->YmaxH <= Cpy->Ymax)))
 		{
-			Cts->PS->Xmin = Cpy->Xmax;
-			Cts->PS->Xmax = Cts->PS->Xmin + 32;
-			return (1);
+			Cts->PS->XminH = Cpy->Xmax;
+			Cts->PS->XmaxH = Cts->PS->XminH + 32;
+			return (true);
 		}
 		Cpy = Cpy->next;
 	}
-	return (0);
+	return (false);
 }
 
-int		ft_move_u(Control_t *Cts)
+bool	ft_move_u(Control_t *Cts)
 {
 	Block_t *Cpy;
 
-	Cpy = Cts->BS;
+	Cpy = Cts->BlS;
 	while (Cpy != NULL)
 	{
-		if ((((Cts->PS->Ymin - Cts->PS->Speed) <= Cpy->Ymax) && ((Cts->PS->Ymin - Cts->PS->Speed) > Cpy->Ymin))
-		&& ((Cts->PS->Xmin >= Cpy->Xmin && Cts->PS->Xmin < Cpy->Xmax)
-		|| (Cts->PS->Xmax > Cpy->Xmin && Cts->PS->Xmax <= Cpy->Xmax)))
+		if ((((Cts->PS->YminH - Cts->PS->Speed) <= Cpy->Ymax) && ((Cts->PS->YminH - Cts->PS->Speed) > Cpy->Ymin))
+		&& ((Cts->PS->XminH >= Cpy->Xmin && Cts->PS->XminH < Cpy->Xmax)
+		|| (Cts->PS->XmaxH > Cpy->Xmin && Cts->PS->XmaxH <= Cpy->Xmax)))
 		{
-			Cts->PS->Ymin = Cpy->Ymax;
-			Cts->PS->Ymax = Cts->PS->Ymin + 32;
+			Cts->PS->YminH = Cpy->Ymax;
+			Cts->PS->YmaxH = Cts->PS->YminH + 32;
 			Cts->PS->Up = -1;
-			return (1);
+			return (true);
 		}
 		Cpy = Cpy->next;
 	}
-	return (0);
+	return (false);
 }
 
-int		ft_move_d(Control_t *Cts)
+bool	ft_move_d(Control_t *Cts)
 {
 	Block_t *Cpy;
 
-	Cpy = Cts->BS;
+	Cpy = Cts->BlS;
 	while (Cpy != NULL)
 	{
-		if ((((Cts->PS->Ymax + Cts->PS->Speed) >= Cpy->Ymin) && ((Cts->PS->Ymax + Cts->PS->Speed) < Cpy->Ymax))
-		&& ((Cts->PS->Xmin >= Cpy->Xmin && Cts->PS->Xmin < Cpy->Xmax)
-		|| (Cts->PS->Xmax > Cpy->Xmin && Cts->PS->Xmax <= Cpy->Xmax)))
+		if ((((Cts->PS->YmaxH + Cts->PS->Speed) >= Cpy->Ymin) && ((Cts->PS->YmaxH + Cts->PS->Speed) < Cpy->Ymax))
+		&& ((Cts->PS->XminH >= Cpy->Xmin && Cts->PS->XminH < Cpy->Xmax)
+		|| (Cts->PS->XmaxH > Cpy->Xmin && Cts->PS->XmaxH <= Cpy->Xmax)))
 		{
-			Cts->PS->Ymax = Cpy->Ymin;
-			Cts->PS->Ymin = Cts->PS->Ymax - 32;
-			return (1);
+			Cts->PS->YmaxH = Cpy->Ymin;
+			Cts->PS->YminH = Cts->PS->YmaxH - 32;
+			return (true);
 		}
 		Cpy = Cpy->next;
 	}
-	return (0);
+	return (false);
 }

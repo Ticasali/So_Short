@@ -5,28 +5,20 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/10/29 20:39:27 by ticasali          #+#    #+#              #
-#    Updated: 2024/11/01 21:14:14 by ticasali         ###   ########.fr        #
+#    Created: 2025/02/17 09:27:00 by ticasali          #+#    #+#              #
+#    Updated: 2025/02/17 12:35:28 by ticasali         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	Elaym
 
 SRC		=	src/main.c		\
-			src/load.c		\
-			src/tools.c		\
-			src/tool2.c 	\
-			src/event.c		\
-			src/move.c		\
-			src/image.c		\
-			src/block.c		\
-			src/player.c
 
 OBJ		:=	$(SRC:%.c=%.o)
 
-CC	=	gcc
+CC	=	cc
 
-CCFLAGS	= -Wextra -Wall
+CCFLAGS	= -Wextra -Wall -Werror
 
 all:	$(NAME)
 

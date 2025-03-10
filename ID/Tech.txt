@@ -1,6 +1,9 @@
+Dim Player:
+Total: 864px / 384py  27*32x / 12*32y
+Hitbox: 368x a 496x / 256y a 384y
+
 Gravité + inertie
 Player centrée + decalage de la map
-//Multi Duo
 Generation Préocedurale avec Seed
 Systeme de Save
 Stat
@@ -10,7 +13,6 @@ Stat Player:
 Hp:
 Speed:
 Bool Type:
-
 
 SCENE:
 Gameplay
