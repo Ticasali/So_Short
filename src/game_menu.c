@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 06:31:35 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/10 04:49:33 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/11 09:06:03 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,21 @@ void	game_menu(Control_t *ctrl)
 		return ; //Turbo Free
 }
 
-void	check_click_menu(Control_t *ctrl)
+void	check_click_menu(int keycode, Control_t *ctrl)
 {
 	mlx_mouse_get_pos(ctrl->WS->ml, ctrl->WS->win, &ctrl->MeS->xmouse, &ctrl->MeS->ymouse);
-	if (ctrl->MeS->xmouse >= 500 && ctrl->MeS->xmouse <= 800
-		&& ctrl->MeS->ymouse >= 400 && ctrl->MeS->ymouse <= 550)
-		ctrl->MeS->statement = 1;
-	else if (ctrl->MeS->xmouse >= 500 && ctrl->MeS->xmouse <= 800
-		&& ctrl->MeS->ymouse >= 600 && ctrl->MeS->ymouse <= 750)
-		ctrl->MeS->statement = 2;
-	else if (ctrl->MeS->xmouse >= 500 && ctrl->MeS->xmouse <= 800
-		&& ctrl->MeS->ymouse >= 800 && ctrl->MeS->ymouse <= 950)
-		ctrl->MeS->statement = 3;
+	if (keycode == 1)
+	{
+		if (ctrl->MeS->xmouse >= 500 && ctrl->MeS->xmouse <= 800
+			&& ctrl->MeS->ymouse >= 400 && ctrl->MeS->ymouse <= 550)
+			ctrl->MeS->statement = 1;
+		else if (ctrl->MeS->xmouse >= 500 && ctrl->MeS->xmouse <= 800
+			&& ctrl->MeS->ymouse >= 600 && ctrl->MeS->ymouse <= 750)
+			ctrl->MeS->statement = 2;
+		else if (ctrl->MeS->xmouse >= 500 && ctrl->MeS->xmouse <= 800
+			&& ctrl->MeS->ymouse >= 800 && ctrl->MeS->ymouse <= 950)
+			ctrl->MeS->statement = 3;
+	}
 }
 
 void	menu_render(Control_t *ctrl)

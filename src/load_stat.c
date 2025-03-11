@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   setup_game.c                                       :+:      :+:    :+:   */
+/*   load_stat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/10 04:59:32 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/11 08:05:26 by ticasali         ###   ########.fr       */
+/*   Created: 2025/03/10 18:26:03 by ticasali          #+#    #+#             */
+/*   Updated: 2025/03/10 23:07:34 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Elaym.h"
 
-void	start_game_setup(Control_t *ctrl)
+Stat_t	*load_stat(void)
 {
-	if (check_parsing(ctrl) == false)
-		return ; // Turbo Free
-	if (ctrl->PS->stat == NULL)
-		ctrl->PS->stat = load_stat_struct();
-	if (ctrl->PS->stat == NULL)
-		return ;
-	load_pos_player(ctrl);
-	if (load_enemis(ctrl) == false)
-		return ; //Turbo Free
-	if (load_coin(ctrl) == false)
-		return ; //Turbo Free
-	game(ctrl);
+	Stat_t	*ret;
+
+	ret = malloc(sizeof(Stat_t));
+	if (ret == NULL)
+		return (NULL);
+	ret->hp = 10;
+	ret->damage = 1;
+	ret->speed = 5;
+	return (ret);
 }

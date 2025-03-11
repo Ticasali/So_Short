@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   setup_game.c                                       :+:      :+:    :+:   */
+/*   load_coin_sprite.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/10 04:59:32 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/11 08:05:26 by ticasali         ###   ########.fr       */
+/*   Created: 2025/03/11 04:14:39 by ticasali          #+#    #+#             */
+/*   Updated: 2025/03/11 04:38:48 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Elaym.h"
 
-void	start_game_setup(Control_t *ctrl)
+void	**load_coin_sprite(Wind_t *wind, Coin_t *node)
 {
-	if (check_parsing(ctrl) == false)
-		return ; // Turbo Free
-	if (ctrl->PS->stat == NULL)
-		ctrl->PS->stat = load_stat_struct();
-	if (ctrl->PS->stat == NULL)
-		return ;
-	load_pos_player(ctrl);
-	if (load_enemis(ctrl) == false)
-		return ; //Turbo Free
-	if (load_coin(ctrl) == false)
-		return ; //Turbo Free
-	game(ctrl);
+	void	**ret;
+	size_t	ct;
+
+	ret = malloc(sizeof(void *) * 3);
+	if (ret == NULL)
+		return (NULL);
+	ct = 0;
+	while (ct < 3)
+	{
+		ret[ct] = load_image(wind
+				, menu_path_concat("/texture/coin/", ft_itoa(ct), ".xpm"), 64, 64);
+		if (ret[ct] == NULL)
+			return (NULL);
+		++ct;
+	}
+	return (ret);
 }

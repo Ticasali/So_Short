@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 10:14:48 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/10 05:08:39 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/11 05:51:09 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ typedef	struct	Transparency_s
 typedef struct	Stat_s
 {
 	int		hp;
-	int		damage;
+	double	damage;
+	int		speed;
 	//Inventaire
 	//ressources
 }Stat_t;
@@ -84,7 +85,6 @@ typedef struct  Player_s
 	int		XmaxH;
 	int		YmaxH;
 	int		YminH;
-	int		Speed;
 	int		Up;
 	int		Move;
 	int		Up_Val;
@@ -104,10 +104,7 @@ typedef struct  Enemis_s
 	int		Xmax;
 	int		Ymax;
 	int		Ymin;
-	int		Speed;
-	int		Up;
-	int		Move;
-	int		Up_Val;
+	int		speed;
 	int		Zframe;
 	int		Yframe;
 	int		Xframe;
@@ -115,6 +112,17 @@ typedef struct  Enemis_s
 	void	***imgL;
 	struct	Enemis_s *next;
 }Enemis_t;
+
+typedef	struct	Coin_s
+{
+	int		Xmin;
+	int		Ymin;
+	int		Xmax;
+	int		Ymax;
+	int		Frame;
+	void	**img;
+	struct	Coin_s *next;
+}Coin_t;
 
 typedef struct	Spell_s
 {
@@ -157,6 +165,7 @@ typedef struct  Control_s
 	Back_t		*BaS;
 	Menu_t		*MeS;
 	Font_t		*FS;
+	Coin_t		*CS;
 }Control_t;
 
 #endif

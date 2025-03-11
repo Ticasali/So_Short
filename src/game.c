@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   setup_game.c                                       :+:      :+:    :+:   */
+/*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/10 04:59:32 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/11 08:05:26 by ticasali         ###   ########.fr       */
+/*   Created: 2025/03/11 05:54:43 by ticasali          #+#    #+#             */
+/*   Updated: 2025/03/11 11:18:00 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Elaym.h"
 
-void	start_game_setup(Control_t *ctrl)
+void	game(Control_t *ctrl)
 {
-	if (check_parsing(ctrl) == false)
-		return ; // Turbo Free
-	if (ctrl->PS->stat == NULL)
-		ctrl->PS->stat = load_stat_struct();
-	if (ctrl->PS->stat == NULL)
-		return ;
-	load_pos_player(ctrl);
-	if (load_enemis(ctrl) == false)
-		return ; //Turbo Free
-	if (load_coin(ctrl) == false)
-		return ; //Turbo Free
-	game(ctrl);
+	mlx_key_hook(ctrl->WS->win, input_key_game, ctrl);
+	mlx_mouse_hook(ctrl->WS->win,  input_mouse_game, ctrl);
+	mlx_loop_hook(ctrl->WS->ml, game_render, ctrl);
+	mlx_loop(ctrl->WS->ml);
 }
+
+void	input_key_game(); // .h
+void	input_mouse_game(); // .h
+void	game_render(); //.h

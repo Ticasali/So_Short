@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 16:51:55 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/10 02:51:22 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/11 02:44:54 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	***load_player_animation(Wind_t *wind, bool check)
 	ret[1] = load_player_sprite(wind, check, "/texture/player/attack_a/attacka", 8);
 	if (ret[1] == NULL)
 		return (NULL);
-	ret[2] = load_player_special_attack(wind, check, "/texture/player/attack_s/attacks", 18);
+	ret[2] = load_player_sprite(wind, check, "/texture/player/attack_s/attacks", 18);
 	if (ret[2] == NULL)
 		return (NULL);
 	return (load_animation_player(wind, check, ret));
@@ -47,22 +47,22 @@ void	***load_player_animation(Wind_t *wind, bool check)
 
 void	***load_animation_player(Wind_t *wind, bool check, void ***ret)
 {
-	ret[3] = load_player_damage(wind, check, "/texture/player/damage/damage", 6);
+	ret[3] = load_player_sprite(wind, check, "/texture/player/damage/damage", 6);
 	if (ret[3] == NULL)
 		return (NULL);
-	ret[4] = load_player_death(wind, check, "/texture/player/death/death", 13);
+	ret[4] = load_player_sprite(wind, check, "/texture/player/death/death", 13);
 	if (ret[4] == NULL)
 		return (NULL);
-	ret[5] = load_player_defend(wind, check, "/texture/player/defend/defend", 10);
+	ret[5] = load_player_sprite(wind, check, "/texture/player/defend/defend", 10);
 	if (ret[5] == NULL)
 		return (NULL);
-	ret[6] = load_player_idle(wind, check, "/texture/player/idle/idle", 8);
+	ret[6] = load_player_sprite(wind, check, "/texture/player/idle/idle", 8);
 	if (ret[6] == NULL)
 		return (NULL);
-	ret[7] = load_player_jump(wind, check, "/texture/player/jump/jump", 20);
+	ret[7] = load_player_sprite(wind, check, "/texture/player/jump/jump", 20);
 	if (ret[7] == NULL)
 		return (NULL);
-	ret[8] = load_player_move(wind, check, "/texture/player/move/move", 8);
+	ret[8] = load_player_sprite(wind, check, "/texture/player/move/move", 8);
 	if (ret[8] == NULL)
 		return (NULL);
 	return (ret);

@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   setup_game.c                                       :+:      :+:    :+:   */
+/*   parsing_length.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/10 04:59:32 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/11 08:05:26 by ticasali         ###   ########.fr       */
+/*   Created: 2025/03/11 08:20:33 by ticasali          #+#    #+#             */
+/*   Updated: 2025/03/11 08:29:02 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Elaym.h"
 
-void	start_game_setup(Control_t *ctrl)
+bool	check_lenght(char **map)
 {
-	if (check_parsing(ctrl) == false)
-		return ; // Turbo Free
-	if (ctrl->PS->stat == NULL)
-		ctrl->PS->stat = load_stat_struct();
-	if (ctrl->PS->stat == NULL)
-		return ;
-	load_pos_player(ctrl);
-	if (load_enemis(ctrl) == false)
-		return ; //Turbo Free
-	if (load_coin(ctrl) == false)
-		return ; //Turbo Free
-	game(ctrl);
+	size_t	ct_y;
+	size_t	verif;
+
+	ct_y = 0;
+	verif = ft_strlen(map[ct_y]);
+	while (map[++ct_y] != NULL)
+		if (ft_strlen(map[ct_y]) != verif)
+			return (false);
+	return (true);
 }
