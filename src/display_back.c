@@ -1,38 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_player.c                                      :+:      :+:    :+:   */
+/*   display_back.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/08 03:14:33 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/12 02:52:27 by ticasali         ###   ########.fr       */
+/*   Created: 2025/03/12 06:16:51 by ticasali          #+#    #+#             */
+/*   Updated: 2025/03/12 22:58:29 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Elaym.h"
 
-size_t	find_player(char **map, bool check)
+void	display_back(Control_t *ctrl)
 {
-	size_t	ct_y;
-	size_t	ct_x;
+	size_t	ct;
+	Back_t	*back;
 
-	ct_y = 0;
-	while (map[ct_y] != NULL)
+	ct = 0;
+	while (ct != ctrl->Statement)
 	{
-		ct_x = 0;
-		while (map[ct_y][ct_x] != '\0')
-		{
-			if (map[ct_y][ct_x] == 'P')
-			{
-				if (check == true)
-					return (ct_y);
-				else
-					return (ct_x);
-			}
-			++ct_y;
-			++ct_x;
-		}
+		back = back->next;
+		++ct;
 	}
-	return (0);
+	mlx_put_image_to_window(ctrl->WS->ml, ctrl->WS->win, back->img, 0, 0);
 }
+
+//Check Transparency

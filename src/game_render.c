@@ -1,38 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_player.c                                      :+:      :+:    :+:   */
+/*   game_render.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/08 03:14:33 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/12 02:52:27 by ticasali         ###   ########.fr       */
+/*   Created: 2025/03/12 05:56:58 by ticasali          #+#    #+#             */
+/*   Updated: 2025/03/12 22:59:43 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Elaym.h"
 
-size_t	find_player(char **map, bool check)
+void	game_render(Control_t *ctrl)
 {
-	size_t	ct_y;
-	size_t	ct_x;
-
-	ct_y = 0;
-	while (map[ct_y] != NULL)
+	double	time;
+	time = get_pos();
+	if ((time + 0.05) > ctrl->MeS->time)
 	{
-		ct_x = 0;
-		while (map[ct_y][ct_x] != '\0')
-		{
-			if (map[ct_y][ct_x] == 'P')
-			{
-				if (check == true)
-					return (ct_y);
-				else
-					return (ct_x);
-			}
-			++ct_y;
-			++ct_x;
-		}
+		display_back(ctrl);
+//		display_paralax(ctrl);
+//		display_block(ctrl);
+//		display_player(ctrl);
+//		display_enem(ctrl);
+//		display_spell(ctrl);
+//		display_pnj(ctrl);
+//		display_coin(ctrl);
+//		display_decor(ctrl);
 	}
-	return (0);
 }

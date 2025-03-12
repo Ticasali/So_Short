@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 02:36:39 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/11 02:50:32 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/12 03:40:03 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 bool	load_enemis_sprite(Wind_t *wind, Enemis_t *enem)
 {
-	enem->Zframe = 0;
 	enem->Yframe = 0;
 	enem->Xframe = 0;
 	enem->imgR = load_enem_animation(wind, true);

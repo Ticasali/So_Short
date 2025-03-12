@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 10:14:48 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/11 05:51:09 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/12 03:40:09 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,11 @@ typedef struct  Player_s
 	int		Up;
 	int		Move;
 	int		Up_Val;
-	int		Zframe;
 	int		Yframe;
 	int		Xframe;
+	bool	left;
+	bool	right;
+	bool	Dir;
 	void	***imgR;
 	void	***imgL;
 	Stat_t	*stat;
@@ -105,7 +107,6 @@ typedef struct  Enemis_s
 	int		Ymax;
 	int		Ymin;
 	int		speed;
-	int		Zframe;
 	int		Yframe;
 	int		Xframe;
 	void	***imgR;

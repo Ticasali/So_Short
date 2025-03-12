@@ -1,38 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_player.c                                      :+:      :+:    :+:   */
+/*   key_pressed_game.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/08 03:14:33 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/12 02:52:27 by ticasali         ###   ########.fr       */
+/*   Created: 2025/03/12 02:49:26 by ticasali          #+#    #+#             */
+/*   Updated: 2025/03/12 03:27:29 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Elaym.h"
 
-size_t	find_player(char **map, bool check)
+void	key_pressed_game(int keycode, Control_t *ctrl)
 {
-	size_t	ct_y;
-	size_t	ct_x;
-
-	ct_y = 0;
-	while (map[ct_y] != NULL)
+	if (keycode == XK_Left)
 	{
-		ct_x = 0;
-		while (map[ct_y][ct_x] != '\0')
-		{
-			if (map[ct_y][ct_x] == 'P')
-			{
-				if (check == true)
-					return (ct_y);
-				else
-					return (ct_x);
-			}
-			++ct_y;
-			++ct_x;
-		}
+		ctrl->PS->Dir = false;
+		ctrl->PS->left = true;
+		if (ctrl->PS->right == true)
+			ctrl->PS->right = false;
 	}
-	return (0);
+	else if (keycode == XK_Right)
+	{
+		ctrl->PS->Dir = true;
+		ctrl->PS->right = true;
+		if (ctrl->PS->left == true)
+			ctrl->PS->left = false;
+	}
 }

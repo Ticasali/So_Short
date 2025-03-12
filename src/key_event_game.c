@@ -1,30 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   setup_game.c                                       :+:      :+:    :+:   */
+/*   key_event_game.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/10 04:59:32 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/12 03:41:53 by ticasali         ###   ########.fr       */
+/*   Created: 2025/03/12 00:06:35 by ticasali          #+#    #+#             */
+/*   Updated: 2025/03/12 02:54:24 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Elaym.h"
 
-void	start_game_setup(Control_t *ctrl)
+void	key_event_game(int keycode, Control_t *ctrl)
 {
-	if (check_parsing(ctrl) == false)
-		return ; // Turbo Free
-	if (ctrl->PS->stat == NULL)
-		ctrl->PS->stat = load_stat_struct();
-	if (ctrl->PS->stat == NULL)
-		return ;
-	load_pos_player(ctrl);
-	if (load_enemis(ctrl) == false)
+	if (keycode == XK_Escape)
+	{
+		mlx_destroy_window(ctrl->WS->ml, ctrl->WS->win);
 		return ; //Turbo Free
-	if (load_coin(ctrl) == false)
-		return ; //Turbo Free
-	mlx_do_key_autorepeatoff(ctrl->WS->ml);
-	game(ctrl);
+	}
+	if (keycode == XK_Up)
+		key_event_game_up(ctrl);
+}
+
+void	key_event_game_up(Control_t *ctrl)
+{
+	if (ctrl->PS->Up == 0)
+	{
+		if (ctrl->PS->Up == 0)
+		{
+			ctrl->PS->Up_Val = ctrl->PS->YmaxH - 75;
+			ctrl->PS->Up = 1;
+		}
+		if (ft_move_u(ctrl) == 0)
+		{
+			ctrl->PS->YminH -= 1;
+			ctrl->PS->YmaxH -= 1;
+			ctrl->PS->y -= 1;
+		}
+	}
 }
