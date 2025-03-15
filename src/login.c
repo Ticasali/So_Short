@@ -6,13 +6,13 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 03:40:00 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/10 04:38:33 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/13 01:18:38 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Elaym.h"
 
-void	add_char_login(Control_t *ctrl, char c)
+void	add_char_login(t_Control *ctrl, char c)
 {
 	size_t	ct;
 
@@ -24,7 +24,7 @@ void	add_char_login(Control_t *ctrl, char c)
 	}
 }
 
-void	del_char_login(Control_t *ctrl)
+void	del_char_login(t_Control *ctrl)
 {
 	size_t	ct;
 
@@ -33,7 +33,7 @@ void	del_char_login(Control_t *ctrl)
 		ctrl->login[ct - 1] = '\0';
 }
 
-bool	check_login(Control_t *ctrl)
+bool	check_login(t_Control *ctrl)
 {
 	size_t	ct;
 

@@ -6,37 +6,69 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 00:06:35 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/12 02:54:24 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/15 12:01:06 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Elaym.h"
 
-void	key_event_game(int keycode, Control_t *ctrl)
+int	key_event_game(int keycode, t_Control *ctrl)
 {
 	if (keycode == XK_Escape)
 	{
-		mlx_destroy_window(ctrl->WS->ml, ctrl->WS->win);
-		return ; //Turbo Free
+		mlx_do_key_autorepeaton(ctrl->ws->ml);
+		mlx_destroy_window(ctrl->ws->ml, ctrl->ws->win);
+		return (-1);
 	}
 	if (keycode == XK_Up)
 		key_event_game_up(ctrl);
+	if (keycode == XK_Right)
+	{
+		ctrl->ps->right = true;
+		key_event_game_right(ctrl);
+	}
+	if (keycode == XK_Left)
+	{
+		ctrl->ps->right = false;
+		key_event_game_left(ctrl);
+	}
+	return (0);
 }
 
-void	key_event_game_up(Control_t *ctrl)
+void	key_event_game_up(t_Control *ctrl)
 {
-	if (ctrl->PS->Up == 0)
+	if (ctrl->ps->up == 0)
 	{
-		if (ctrl->PS->Up == 0)
+		if (ctrl->ps->up == 0)
 		{
-			ctrl->PS->Up_Val = ctrl->PS->YmaxH - 75;
-			ctrl->PS->Up = 1;
+			ctrl->ps->up_val = ctrl->ps->ymaxh - 75;
+			ctrl->ps->up = 1;
 		}
-		if (ft_move_u(ctrl) == 0)
+		if (ft_move_up(ctrl) == 0)
 		{
-			ctrl->PS->YminH -= 1;
-			ctrl->PS->YmaxH -= 1;
-			ctrl->PS->y -= 1;
+			ctrl->ps->yminh -= 1;
+			ctrl->ps->ymaxh -= 1;
+			ctrl->ps->y -= 1;
 		}
+	}
+}
+
+void	key_event_game_right(t_Control *ctrl)
+{
+	if (ft_move_right(ctrl) == 0)
+	{
+		ctrl->ps->xminh += ctrl->ps->stat->speed;
+		ctrl->ps->xmaxh += ctrl->ps->stat->speed;
+		ctrl->ps->x += ctrl->ps->stat->speed;
+	}
+}
+
+void	key_event_game_left(t_Control *ctrl)
+{
+	if (ft_move_left(ctrl) == 0)
+	{
+		ctrl->ps->xminh -= ctrl->ps->stat->speed;
+		ctrl->ps->xmaxh -= ctrl->ps->stat->speed;
+		ctrl->ps->x -= ctrl->ps->stat->speed;
 	}
 }

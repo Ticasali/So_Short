@@ -6,68 +6,88 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 04:08:13 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/11 05:48:04 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/15 09:58:37 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Elaym.h"
 
-bool	load_coin(Control_t *ctrl)
+bool	load_coin_struct(t_Control *ctrl)
+{
+	ctrl->cs = load_coin(ctrl->ws, pars_map_coin(&ctrl->ms, ctrl->statement));
+	if (ctrl->cs == NULL)
+		return (false);
+	return (true);
+
+}
+
+t_Map	*pars_map_coin(t_Map **map, size_t ct_m)
+{
+	t_Map	*cpy;
+	size_t	ct;
+
+	cpy = *map;
+	ct = 0;
+	while (ct < ct_m)
+	{
+		cpy = cpy->next;
+		++ct;
+	}
+	return (cpy);
+}
+
+t_Coin	*load_coin(t_Wind *wind, t_Map *map)
 {
 	size_t	ct_y;
 	size_t	ct_x;
-	Map_t	*map;
-	size_t	ct;
+	t_Coin	*ret;
+	int		*pos = malloc(sizeof(int) * 3);
 
 	ct_y = -1;
-	ct = -1;
-	map = ctrl->MS;
-	while (++ct < ctrl->Statement)
-		map = map->next;
+	pos[2] = 0;
 	while (map->map[++ct_y] != NULL)
 	{
-		ct_x = -1;
-		while (map->map[ct_y][++ct_x] != '\0')
+		ct_x = 0;
+		while (map->map[ct_y][ct_x] != '\0')
 		{
 			if (map->map[ct_y][ct_x] == 'C')
-				if (add_back_coin(load_node_coin(ctrl, ct_x, ct_y), ctrl) == false)
-					return (false);
+			{
+				pos[0] = ct_y;
+				pos[1] = ct_x;
+				if (add_node_coin(wind, pos, &ret) == false)
+					return (NULL);
+				++pos[2];
+			}
+			++ct_x;
 		}
 	}
-	return (true);
+	free(pos);
+	return (ret);
 }
 
-Coin_t	*load_node_enem(Control_t *ctrl, size_t x, size_t y)
+bool	add_node_coin(t_Wind *wind, int *pos, t_Coin **coin)
 {
-	Coin_t	*node;
+	t_Coin	*node;
+	t_Coin	*cpy;
 
-	node = malloc(sizeof(Coin_t));
+	node = malloc(sizeof(t_Coin));
 	if (node == NULL)
 		return (NULL);
-	node->img = load_coin_sprite(ctrl->WS);
+	node->img = load_coin_sprite(wind);
 	if (node->img == NULL)
 		return (NULL);
-	node->Frame = 0;
-	node->Xmax = 64 * x + 64;
-	node->Ymax = 64 * y;
-	node->Xmin = 64 * x;
-	node->Ymin = 64 * y + 64;
+	node->frame = 0;
+	node->xmax = 64 * pos[1] + 64;
+	node->ymax = 64 * pos[0] + 64;
+	node->xmin = 64 * pos[1];
+	node->ymin = 64 * pos[0];
 	node->next = NULL;
-	return (node);
-}
-
-bool	add_back_coin(Coin_t *node, Control_t *ctrl)
-{
-	Coin_t	*cpy;
-
-	if (node == NULL)
-		return (false);
-	cpy = *ctrl->ES;
-	if (cpy == NULL)
+	if (pos[2] == 0)
 	{
-		node = ctrl->ES;
+		*coin = node;
 		return (true);
 	}
+	cpy = *coin;
 	while (cpy->next != NULL)
 		cpy = cpy->next;
 	cpy->next = node;

@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 03:14:33 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/12 02:52:27 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/14 06:51:41 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ size_t	find_player(char **map, bool check)
 				else
 					return (ct_x);
 			}
-			++ct_y;
 			++ct_x;
 		}
+		++ct_y;
 	}
 	return (0);
 }

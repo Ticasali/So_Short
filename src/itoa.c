@@ -6,14 +6,14 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 14:56:31 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/09 22:30:56 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/12 23:55:08 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Elaym.h"
 #include "limits.h"
 
-static char	*ft_revstr(char *ret)
+char	*ft_revstr(char *ret)
 {
 	size_t	fst;
 	size_t	lst;
@@ -37,7 +37,7 @@ static char	*ft_revstr(char *ret)
 	return (ret);
 }
 
-static size_t	ft_allocated_value(int n)
+size_t	ft_allocated_value(int n)
 {
 	size_t	ret;
 

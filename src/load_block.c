@@ -6,102 +6,86 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 12:57:44 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/06 18:49:44 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/15 10:17:49 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Elaym.h"
 
-bool	load_block_struct(Control_t **ctrl, int ac)
+bool	load_block_struct(t_Control *ctrl)
 {
-	size_t	ct;
+	int	ct;
 
 	ct = 0;
-	ctrl[0]->BlS = malloc(sizeof(Block_t) * (ac - 1));
-		if (ctrl[0]->BlS == NULL)
-			return (false);
-	while (++ct < ac)
-		if (pars_map_for_block(ctrl[0]->WS, ctrl[0]->BlS[ct], &ctrl[0]->MS, ct) == false)
-			return (false);
-	return (true);
-}
-/*
-size_t	find_map_to_pars(size_t	ac)
-{
-	size_t	ct;
-	size_t	res;
-
-	ct = 0;
-	res = 1;
-	while (ct < ac)
-	{
-		++ct;
-		if (ct % 2 == 0)
-			++res;
-	}
-	return (res);
-}
-*/
-bool	pars_map_for_block(Wind_t *wind, Block_t *block, Map_t **map, size_t ct_map)
-{
-	Map_t	*cpy;
-	size_t	ct;
-
-	cpy = *map;
-	ct = 0;
-	while (ct < ct_map)
-	{
-		cpy = cpy->next;
-		++ct;
-	}
-	if (load_block(wind, block, cpy, ct) == false)
+	ctrl->bls = load_block(ctrl->ws, pars_map_block(&ctrl->ms, ctrl->statement), ctrl->statement);
+	if (ctrl->bls == NULL)
 		return (false);
 	return (true);
 }
 
-bool	load_block(Wind_t *wind, Block_t *block, Map_t *map, size_t ct_map)
+t_Map	*pars_map_block(t_Map **map, size_t ct_m)
+{
+	t_Map	*cpy;
+	size_t	ct;
+
+	cpy = *map;
+	ct = 0;
+	while (ct < ct_m)
+	{
+		cpy = cpy->next;
+		++ct;
+	}
+	return (cpy);
+}
+
+t_Block	*load_block(t_Wind *wind, t_Map *map, int ct_map)
 {
 	size_t	ct_y;
 	size_t	ct_x;
-	int		pos[3];
+	int		*pos = malloc(sizeof(int) * 4);
+	t_Block	*ret;
 
 	ct_y = -1;
-	pos[3] = ct_map;
+	pos[2] = ct_map + 1;
+	pos[3] = 0;
 	while (map->map[++ct_y] != NULL)
 	{
-		ct_x = -1;
-		while (map->map[ct_y][++ct_x] != '\0')
+		ct_x = 0;
+		while (map->map[ct_y][ct_x] != '\0')
 		{
 			if (map->map[ct_y][ct_x] == '1')
 			{
 				pos[0] = ct_y;
 				pos[1] = ct_x;
-				if (add_node_block(wind, &block, map, pos) == false)
-					return (false);
+				if (add_node_block(wind, &ret, map, pos) == false)
+					return (NULL);
+				++pos[3];
 			}
+			++ct_x;
 		}
 	}
-	return (true);
+	free(pos);
+	return (ret);
 }
 
-bool	add_node_block(Wind_t *wind, Block_t **block, Map_t *map, int *pos)
+bool	add_node_block(t_Wind *wind, t_Block **block, t_Map *map, int *pos)
 {
-	Block_t	*new;
-	Block_t	*cpy;
+	t_Block	*new;
+	t_Block	*cpy;
 
-	new = malloc(sizeof(Block_t));
+	new = malloc(sizeof(t_Block));
 	if (new == NULL)
 		return (false);
 	new->img = gen_background(wind, map, pos, true);
-	new->imgP = gen_background(wind, map, pos, false);
-	if (new->img == NULL || new->imgP == NULL)
+	new->imgp = gen_background(wind, map, pos, false);
+	if (new->img == NULL || new->imgp == NULL)
 		return (false);
-	new->Xmin = pos[1] * 64;
-	new->Xmax = pos[1] * 64 + 64;
-	new->Ymax = pos[0] * 64 + 64;
-	new->Ymin = pos[0] * 64;
+	new->xmin = pos[1] * 64;
+	new->xmax = pos[1] * 64 + 64;
+	new->ymax = pos[0] * 64 + 64;
+	new->ymin = pos[0] * 64;
 	new->next = NULL;
-	if (*block == NULL)
+	if (pos[3] == 0)
 	{
 		*block = new;
 		return (true);

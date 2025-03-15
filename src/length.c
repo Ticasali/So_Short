@@ -6,13 +6,13 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 13:03:45 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/10 03:47:40 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/13 03:24:03 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Elaym.h"
 
-size_t	ft_strlen(char *str)
+size_t	ft_strlen(char const *str)
 {
 	size_t	ret;
 

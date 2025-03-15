@@ -6,81 +6,88 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 06:31:35 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/11 09:06:03 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/14 12:10:11 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Elaym.h"
+#include "../mlx_linux/mlx_int.h"
 
-void	game_menu(Control_t *ctrl)
+void	game_menu(t_Control *ctrl)
 {
-	Menu_t	*menu;
-	
-	menu = load_menu_struct(ctrl->WS);
+	t_Menu	*menu;
+
+	menu = load_menu_struct(ctrl->ws);
 	if (menu == NULL)
 		return ;
-	ctrl->MeS = menu;
-	while (menu->statement == 0)
-	{
-		mlx_hook(ctrl->WS->win, 2, 1L<<0, escape_touch, ctrl);
-		mlx_mouse_hook(ctrl->WS->win, check_click_menu, ctrl);
-		mlx_loop_hook(ctrl->WS->ml, menu_render, ctrl);
-		mlx_loop(ctrl->WS->ml);
-	}
-	mlx_clear_window(ctrl->WS->ml, ctrl->WS->win);
-	mlx_loop_end(ctrl->WS->ml);
+	ctrl->mes = menu;
+	ctrl->mes->try = 0;
+	mlx_hook(ctrl->ws->win, 2, 1L<<0, escape_touch, ctrl);
+	mlx_hook(ctrl->ws->win, ButtonPress, ButtonPressMask, check_click_menu, ctrl);
+	mlx_loop_hook(ctrl->ws->ml, menu_render, ctrl);
+	mlx_loop(ctrl->ws->ml);
 	if (menu->statement == 1)
-		load_new_game(ctrl);
-	if (menu->statement == 2)
-		load_save_game(ctrl);
-	if (menu->statement == 3)
-		return ; //Turbo Free
-}
-
-void	check_click_menu(int keycode, Control_t *ctrl)
-{
-	mlx_mouse_get_pos(ctrl->WS->ml, ctrl->WS->win, &ctrl->MeS->xmouse, &ctrl->MeS->ymouse);
-	if (keycode == 1)
 	{
-		if (ctrl->MeS->xmouse >= 500 && ctrl->MeS->xmouse <= 800
-			&& ctrl->MeS->ymouse >= 400 && ctrl->MeS->ymouse <= 550)
-			ctrl->MeS->statement = 1;
-		else if (ctrl->MeS->xmouse >= 500 && ctrl->MeS->xmouse <= 800
-			&& ctrl->MeS->ymouse >= 600 && ctrl->MeS->ymouse <= 750)
-			ctrl->MeS->statement = 2;
-		else if (ctrl->MeS->xmouse >= 500 && ctrl->MeS->xmouse <= 800
-			&& ctrl->MeS->ymouse >= 800 && ctrl->MeS->ymouse <= 950)
-			ctrl->MeS->statement = 3;
+		mlx_reset(ctrl->ws->ml);
+		mlx_clear_window(ctrl->ws->ml, ctrl->ws->win);
+		load_new_game(ctrl);
 	}
+//	if (menu->statement == 2)
+//		load_save_game(ctrl);
+	if (menu->statement == 3)
+		return ;
 }
 
-void	menu_render(Control_t *ctrl)
+int	check_click_menu(int button, int x, int y, t_Control *ctrl)
+{
+	if (button == 1)
+	{
+		if ((x >= 500 && x <= 600) && (y >= 150 && y <= 200))
+			ctrl->mes->statement = 1;
+		if ((x >= 500 && x <= 600) && (y >= 250 && y <= 300))
+			ctrl->mes->statement = 2;
+		if ((x >= 500 && x <= 600) && (y >= 350 && y <= 400))
+			ctrl->mes->statement = 3;
+	}
+	return (0);
+}
+
+int	menu_render(t_Control *ctrl)
 {
 	double	time;
+	double	test;
 
-	mlx_mouse_get_pos(ctrl->WS->ml, ctrl->WS->win, &ctrl->MeS->xmouse, &ctrl->MeS->ymouse);
-	time = get_pos();
-	if ((time + 0.05) > ctrl->MeS->time)
+	time = get_time();
+	test = 0.2;
+	if ((time - test) > ctrl->mes->time)
 	{
-		if (ctrl->MeS->FrameBack < 3)
-			++ctrl->MeS->FrameBack;
-		else
-			ctrl->MeS->FrameBack = 0;
+		mlx_mouse_get_pos(ctrl->ws->ml, ctrl->ws->win,
+			&ctrl->mes->xmouse, &ctrl->mes->ymouse);
 		menu_animation_button(ctrl);
-		ctrl->MeS->time = time;
-		mlx_put_image_to_window(ctrl->WS->ml, ctrl->WS->win
-			, ctrl->MeS->background[ctrl->MeS->FrameBack], 0, 0);
-		mlx_put_image_to_window(ctrl->WS->ml, ctrl->WS->win
-			, ctrl->MeS->button[0][ctrl->MeS->FrameButton[0]], 0, 0);
-		mlx_put_image_to_window(ctrl->WS->ml, ctrl->WS->win
-			, ctrl->MeS->button[1][ctrl->MeS->FrameButton[1]], 0, 0);
-		mlx_put_image_to_window(ctrl->WS->ml, ctrl->WS->win
-			, ctrl->MeS->button[2][ctrl->MeS->FrameButton[2]], 0, 0);
+		ctrl->mes->time = time;
+		mlx_put_image_to_window(ctrl->ws->ml, ctrl->ws->win,
+			ctrl->mes->background[ctrl->mes->frameback], 0, 0);
+		mlx_put_image_to_window(ctrl->ws->ml, ctrl->ws->win,
+			ctrl->mes->button[0][ctrl->mes->framebutton[0]], 500, 150);
+		mlx_put_image_to_window(ctrl->ws->ml, ctrl->ws->win,
+			ctrl->mes->button[1][ctrl->mes->framebutton[1]], 500, 250);
+		mlx_put_image_to_window(ctrl->ws->ml, ctrl->ws->win,
+			ctrl->mes->button[2][ctrl->mes->framebutton[2]], 500, 350);
+		if (ctrl->mes->frameback < 2)
+			++ctrl->mes->frameback;
+		else
+			ctrl->mes->frameback = 0;
 	}
+	if (ctrl->mes->statement == 3 || ctrl->mes->statement == 1)
+		mlx_loop_end(ctrl->ws->ml);	
+	return (0);
 }
 
-void	escape_touch(int keycode, Control_t *ctrl)
+int	escape_touch(int keycode, t_Control *ctrl)
 {
 	if (keycode == XK_Escape)
-		ctrl->MeS->statement = 3;
+	{
+		ctrl->mes->statement = 3;
+	}
+	return (0);
 }

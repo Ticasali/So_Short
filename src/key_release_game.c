@@ -6,16 +6,17 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 02:50:19 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/12 03:19:36 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/13 03:34:23 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Elaym.h"
 
-void	key_release_game(int keycode, Control_t *ctrl)
+int	key_release_game(int keycode, t_Control *ctrl)
 {
 	if (keycode == XK_Left)
-		ctrl->PS->left = false;
+		ctrl->ps->left = false;
 	if (keycode == XK_Right)
-		ctrl->PS->right = true;
+		ctrl->ps->right = true;
+	return (0);
 }

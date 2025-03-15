@@ -6,26 +6,27 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 14:35:50 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/11 04:35:27 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/14 14:10:28 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Elaym.h"
 
-void	*load_img_block(Wind_t *wind, int *pos, bool check, char const *str)
+void	*load_img_block(t_Wind *wind, int *pos, bool check, char const *str)
 {
-	char	path[] = "/texture/block/";
-	char	*map;
-	char	*final_path;
-	int		val;
-	void	*ret;
+	char const	*path;
+	char		*map;
+	char		*final_path;
+	int			val;
+	void		*ret;
 
+	path = "./texture/block/";
 	map = ft_itoa(pos[2]);
 	if (map == NULL)
 		return (NULL);
 	if (check == true)
 		final_path = block_path_concat(path, map, 'b', str);
-	if (check == true)
+	if (check == false)
 		final_path = block_path_concat(path, map, 'B', str);
 	if (final_path == NULL)
 	{

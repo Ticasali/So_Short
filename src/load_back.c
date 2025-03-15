@@ -6,60 +6,61 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:59:38 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/08 06:26:35 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/15 06:39:36 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Elaym.h"
 
-bool	load_back(Wind_t *wind, Back_t *back, int ac)
+t_Back	*load_back(t_Wind *wind, int ac)
 {
 	int		ct;
 	char	*itoa;
-	Back_t	*node;
+	t_Back	*ret;
+	t_Back	*node;
 
-	ct = 0;;
+	ct = 0;
 	while (++ct < ac)
 	{
 		itoa = ft_itoa(ct);
 		if (itoa == NULL)
-			return (false);
+			return (NULL);
 		node = create_node(wind,
-			final_path_concat("/texture/font/", itoa, 'back', ".xpm"),
-			final_path_concat("/texture/font/", itoa, 'Back', ".xpm"));
+				back_path_concat("./texture/back/", itoa, 'b', "ack.xpm"),
+				back_path_concat("./texture/back/", itoa, 'B', "ack.xpm"));
 		free(itoa);
 		if (node == NULL)
-			return (false);
+			return (NULL);
 		else
-			add_back(&back, node);
+			add_back(&ret, node, ct);
 	}
-	return (true);
+	return (ret);
 }
 
-Back_t	*create_node(Wind_t	*wind, char *path, char *pathP)
+t_Back	*create_node(t_Wind	*wind, char *path, char *pathp)
 {
-	Back_t	*ret;
-	size_t	sizeX;
-	size_t	sizeY;
+	t_Back	*ret;
+	int		sizex;
+	int		sizey;
 
-	sizeY = 640;
-	sizeX = 640;
-	ret = malloc(sizeof(Back_t));
-	if (ret == NULL);
+	sizey = 576;
+	sizex = 1536;
+	ret = malloc(sizeof(t_Back));
+	if (ret == NULL)
 		return (NULL);
-	ret->img = mlx_xpm_file_to_image(wind->ml, path, &sizeY, &sizeX);
-	ret->imgP = mlx_xpm_file_to_image(wind->ml, pathP, &sizeY, &sizeX);
-	if (ret->img == NULL || ret->imgP == NULL)
+	ret->img = load_image(wind, path, 3072, 1728);
+	ret->imgp = load_image(wind, pathp, 3072, 1728);
+	if (ret->img == NULL || ret->imgp == NULL)
 		return (NULL);
 	ret->next = NULL;
 	return (ret);
 }
 
-void	add_back(Back_t	**back, Back_t	*node)
+void	add_back(t_Back	**back, t_Back *node, int ct)
 {
-	Back_t	*cpy;
+	t_Back	*cpy;
 
-	if (*back == NULL)
+	if (ct == 1)
 	{
 		*back = node;
 		return ;

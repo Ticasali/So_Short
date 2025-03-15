@@ -6,45 +6,47 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 13:18:56 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/10 03:22:57 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/15 05:11:06 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Elaym.h"
 
-void	load_data(Control_t **ctrl, int ac, char **av)
+bool	load_data(t_Control *ctrl, int ac, char **av)
 {
-	Map_t		*map;
-	Wind_t		*wind;
-	Player_t	*play;
-	Back_t		*back;
-	Font_t		*font;
+	t_Wind	*wind;
+	t_Play	*play;
+	t_Font	*font;
 
-	back = malloc(sizeof(Back_t));
-	wind = malloc(sizeof(Wind_t));
-	play = malloc(sizeof(Player_t));
-	font = malloc(sizeof(Font_t));
-	if (wind == NULL
-		|| play == NULL || back == NULL)
-		return (free_all(ctrl));
-	ctrl[0]->MS = map;
-	ctrl[0]->WS = wind;
-	ctrl[0]->PS = play;
-	ctrl[0]->BaS = back;
-	ctrl[0]->FS = font;
-	if ((load_map(map, ac, av) == false)
-		|| (load_window(wind) == false)
-		|| (load_block_struct(ctrl, ac) == false)
-		|| (load_back(wind, back, ac) == false)
-		|| (load_player(wind, play) == false)
-		|| (load_font(wind, font) == false))
-	if (map == NULL || wind == NULL || play == NULL)
-		return (free_all(ctrl));
-	ctrl[0]->Statement = 0;
-	ctrl[0]->login = malloc(sizeof(char) * 9);
-	if (ctrl[0]->login == NULL)
-		return (NULL);
-	ctrl[0]->save = load_tab("save");
-	if (ctrl[0]->save == NULL)
-		return (NULL);
+	wind = malloc(sizeof(t_Wind));
+	play = malloc(sizeof(t_Play));
+	font = malloc(sizeof(t_Font));
+	if (wind == NULL || play == NULL)
+		return (false);
+	ctrl->ws = wind;
+	ctrl->ps = play;
+	ctrl->fs = font;
+	ctrl->ms = load_map(ac, av);
+	if (ctrl->ms == NULL)
+		write(1, "m", 1);
+	if	(load_window(wind) == false)
+		write(1, "w", 1);
+	if (load_player(wind, play) == false)
+		write(1, "p", 1);
+	if (load_font(wind, font) == false)
+		write(1, "f", 1);
+	if (wind == NULL || play == NULL)
+	{
+		write(1, "a", 1);
+	}
+	ctrl->bas = load_back(wind, ac);
+	ctrl->statement = 0;
+	ctrl->login = malloc(sizeof(char) * 9);
+	if (ctrl->login == NULL)
+		return (false);
+	set_zero(ctrl->login, 9);
+//	ctrl->save = load_tab("save");
+//	if (ctrl->save == NULL)
+//		return (false);
+	return (true);
 }

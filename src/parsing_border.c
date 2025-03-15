@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 08:22:43 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/11 08:47:59 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/14 06:49:50 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ bool	check_border_top_bot(char **map, size_t y)
 		++ct;
 	}
 	ct = 0;
-	while (map[y][ct] != '\0')
+	while (map[y - 1][ct] != '\0')
 	{
-		if (map[y][ct] != '1')
+		if (map[y - 1][ct] != '1')
 			return (false);
 		++ct;
 	}
@@ -61,8 +61,9 @@ bool	check_border_left_right(char **map, size_t x)
 	ct = 0;
 	while (map[ct] != NULL)
 	{
-		if (map[ct][x] != '1')
+		if (map[ct][x - 1] != '1')
 			return (false);
 		++ct;
 	}
+	return (true);
 }

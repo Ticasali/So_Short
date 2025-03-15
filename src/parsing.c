@@ -6,20 +6,20 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 08:05:35 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/11 08:48:52 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/14 06:50:30 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Elaym.h"
 
-bool	check_parsing(Control_t *ctrl)
+bool	check_parsing(t_Control *ctrl)
 {
-	Map_t	*map;
+	t_Map	*map;
 	size_t	ct;
 
 	ct = 0;
-	map = ctrl->MS;
-	while (ct < ctrl->Statement)
+	map = ctrl->ms;
+	while (ct < ctrl->statement)
 	{
 		map = map->next;
 		++ct;

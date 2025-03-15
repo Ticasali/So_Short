@@ -6,30 +6,91 @@
 #    By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/17 09:27:00 by ticasali          #+#    #+#              #
-#    Updated: 2025/02/17 12:35:28 by ticasali         ###   ########.fr        #
+#    Updated: 2025/03/15 09:42:08 by ticasali         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	Elaym
 
-SRC		=	src/main.c		\
+DIR_SRCS =			src
 
-OBJ		:=	$(SRC:%.c=%.o)
+SRCS		=	src/main.c				\
+				src/background_border.c	\
+				src/background_link.c	\
+				src/background.c		\
+				src/compare.c			\
+				src/concat_path.c		\
+				src/copy.c				\
+				src/display_back.c		\
+				src/display_block.c		\
+				src/display_coin.c		\
+				src/display_player.c	\
+				src/error.c				\
+				src/find_player.c		\
+				src/ft_split.c			\
+				src/game_menu.c			\
+				src/game_render.c		\
+				src/game.c				\
+				src/get_time.c			\
+				src/itoa.c				\
+				src/key_event_game.c	\
+				src/key_pressed_game.c	\
+				src/key_release_game.c	\
+				src/key_input_login.c	\
+				src/length.c			\
+				src/load_back.c			\
+				src/load_block.c		\
+				src/load_button.c		\
+				src/load_coin_sprite.c	\
+				src/load_coin.c			\
+				src/load_enemis_sprite.c\
+				src/load_ennemis.c		\
+				src/load_font.c			\
+				src/load_image_block.c	\
+				src/load_image.c		\
+				src/load_map.c			\
+				src/load_menu_struct.c	\
+				src/load_new_game.c		\
+				src/load_player_pos.c	\
+				src/load_player_sprite.c\
+				src/load_player.c		\
+				src/load_stat.c			\
+				src/load_struct.c		\
+				src/load_window.c		\
+				src/login.c				\
+				src/menu_sprite_button.c\
+				src/mlx_reset.c			\
+				src/mouse_event_game.c	\
+				src/move.c				\
+				src/parsing_border.c	\
+				src/parsing_char.c		\
+				src/parsing_length.c	\
+				src/parsing_path.c		\
+				src/parsing.c			\
+				src/print_char.c		\
+				src/print_number.c		\
+				src/print_string.c		\
+				src/setup_game.c		\
+				src/transparency.c		\
+			
+DIR_OBJS =			.objs
+OBJS =				$(SRCS:$(DIR_SRCS)/%.c=$(DIR_OBJS)/%.o)
 
 CC	=	cc
 
-CCFLAGS	= -Wextra -Wall -Werror
+CFLAGS	= -Wextra -Wall -Werror -g3
 
 all:	$(NAME)
 
-$(NAME): $(OBJ)
-	$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+$(DIR_OBJS)/%.o:	$(DIR_SRCS)/%.c $(INC)
+					@mkdir -p $(dir $@)
+					$(CC) $(CFLAGS) -c $< -o $@ -I./include
 
-%.o: %.c
-	$(CC) -Wall -Wextra -I/usr/include -Imlx_linux -O3 -c $< -o $@
+$(NAME): $(OBJS)
+	$(CC) $(OBJS) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 
 clean:
-	rm -f $(OBJ)
+	$(RM) -r $(DIR_OBJS)
 
 fclean:	clean
 	make clean -C mlx_linux/

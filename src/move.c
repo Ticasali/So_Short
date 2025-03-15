@@ -6,91 +6,102 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 03:29:40 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/08 02:40:43 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/15 11:50:44 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Elaym.h"
 
-bool		ft_move_r(Control_t *Cts)
+bool	ft_move_right(t_Control *ctrl)
 {
-	Block_t *Cpy;
+	t_Block	*cpy;
 
-	Cpy = Cts->BlS;
-	while (Cpy != NULL)
+	cpy = ctrl->bls;
+	while (cpy != NULL)
 	{
-		if ((((Cts->PS->XmaxH + Cts->PS->Speed) >= Cpy->Xmin)
-		&& ((Cts->PS->XmaxH + Cts->PS->Speed) < Cpy->Xmax))
-		&& ((Cts->PS->YminH >= Cpy->Ymin && Cts->PS->YminH < Cpy->Ymax)
-		|| (Cts->PS->YmaxH > Cpy->Ymin && Cts->PS->YmaxH <= Cpy->Ymax)))
+		if ((((ctrl->ps->xmaxh + ctrl->ps->stat->speed) >= cpy->xmin)
+				&& ((ctrl->ps->xmaxh + ctrl->ps->stat->speed) < cpy->xmax))
+			&& ((ctrl->ps->yminh >= cpy->ymin
+					&& ctrl->ps->yminh < cpy->ymax)
+				|| (ctrl->ps->ymaxh > cpy->ymin
+					&& ctrl->ps->ymaxh <= cpy->ymax)))
 		{
-			Cts->PS->XmaxH = Cpy->Xmin;
-			Cts->PS->XminH = Cts->PS->XmaxH - 32;
+			ctrl->ps->xmaxh = cpy->xmin;
+			ctrl->ps->xminh = ctrl->ps->xmaxh - 32;
 			return (true);
 		}
-		Cpy = Cpy->next;
+		cpy = cpy->next;
 	}
 	return (false);
 }
 
-bool	ft_move_l(Control_t *Cts)
+bool	ft_move_left(t_Control *ctrl)
 {
-	Block_t *Cpy;
+	t_Block	*cpy;
 
-	Cpy = Cts->BlS;
-	while (Cpy != NULL)
+	cpy = ctrl->bls;
+	while (cpy != NULL)
 	{
-		if ((((Cts->PS->XminH - Cts->PS->Speed) <= Cpy->Xmax)
-		&& ((Cts->PS->XminH - Cts->PS->Speed) > Cpy->Xmin))
-		&& ((Cts->PS->YminH >= Cpy->Ymin && Cts->PS->YminH < Cpy->Ymax)
-		|| (Cts->PS->YmaxH > Cpy->Ymin && Cts->PS->YmaxH <= Cpy->Ymax)))
+		if ((((ctrl->ps->xminh - ctrl->ps->stat->speed) <= cpy->xmax)
+				&& ((ctrl->ps->xminh - ctrl->ps->stat->speed) > cpy->xmin))
+			&& ((ctrl->ps->yminh >= cpy->ymin
+					&& ctrl->ps->yminh < cpy->ymax)
+				|| (ctrl->ps->ymaxh > cpy->ymin
+					&& ctrl->ps->ymaxh <= cpy->ymax)))
 		{
-			Cts->PS->XminH = Cpy->Xmax;
-			Cts->PS->XmaxH = Cts->PS->XminH + 32;
+			ctrl->ps->xminh = cpy->xmax;
+			ctrl->ps->xmaxh = ctrl->ps->xminh + 32;
 			return (true);
 		}
-		Cpy = Cpy->next;
+		cpy = cpy->next;
 	}
 	return (false);
 }
 
-bool	ft_move_u(Control_t *Cts)
+bool	ft_move_up(t_Control *ctrl)
 {
-	Block_t *Cpy;
+	t_Block	*cpy;
 
-	Cpy = Cts->BlS;
-	while (Cpy != NULL)
+	cpy = ctrl->bls;
+	while (cpy != NULL)
 	{
-		if ((((Cts->PS->YminH - Cts->PS->Speed) <= Cpy->Ymax) && ((Cts->PS->YminH - Cts->PS->Speed) > Cpy->Ymin))
-		&& ((Cts->PS->XminH >= Cpy->Xmin && Cts->PS->XminH < Cpy->Xmax)
-		|| (Cts->PS->XmaxH > Cpy->Xmin && Cts->PS->XmaxH <= Cpy->Xmax)))
+		if ((((ctrl->ps->yminh - ctrl->ps->stat->speed) <= cpy->ymax)
+				&& ((ctrl->ps->yminh - ctrl->ps->stat->speed) > cpy->ymin))
+			&& ((ctrl->ps->xminh >= cpy->xmin
+					&& ctrl->ps->xminh < cpy->xmax)
+				|| (ctrl->ps->xmaxh > cpy->xmin
+					&& ctrl->ps->xmaxh <= cpy->xmax)))
 		{
-			Cts->PS->YminH = Cpy->Ymax;
-			Cts->PS->YmaxH = Cts->PS->YminH + 32;
-			Cts->PS->Up = -1;
+			ctrl->ps->yminh = cpy->ymax;
+			ctrl->ps->ymaxh = ctrl->ps->yminh + 32;
+			ctrl->ps->up = -1;
 			return (true);
 		}
-		Cpy = Cpy->next;
+		cpy = cpy->next;
 	}
 	return (false);
 }
 
-bool	ft_move_d(Control_t *Cts)
+bool	ft_move_down(t_Control *ctrl)
 {
-	Block_t *Cpy;
+	t_Block	*cpy;
 
-	Cpy = Cts->BlS;
-	while (Cpy != NULL)
+	cpy = ctrl->bls;
+	while (cpy != NULL)
 	{
-		if ((((Cts->PS->YmaxH + Cts->PS->Speed) >= Cpy->Ymin) && ((Cts->PS->YmaxH + Cts->PS->Speed) < Cpy->Ymax))
-		&& ((Cts->PS->XminH >= Cpy->Xmin && Cts->PS->XminH < Cpy->Xmax)
-		|| (Cts->PS->XmaxH > Cpy->Xmin && Cts->PS->XmaxH <= Cpy->Xmax)))
+		if ((((ctrl->ps->ymaxh + ctrl->ps->stat->speed) >= cpy->ymin)
+				&& ((ctrl->ps->ymaxh + ctrl->ps->stat->speed) < cpy->ymax))
+			&& ((ctrl->ps->xminh >= cpy->xmin
+					&& ctrl->ps->xminh < cpy->xmax)
+				|| (ctrl->ps->xmaxh > cpy->xmin
+					&& ctrl->ps->xmaxh <= cpy->xmax)))
 		{
-			Cts->PS->YmaxH = Cpy->Ymin;
-			Cts->PS->YminH = Cts->PS->YmaxH - 32;
+			ctrl->ps->ymaxh = cpy->ymin;
+			ctrl->ps->yminh = ctrl->ps->ymaxh - 32;
+			ctrl->ps->y = cpy->ymin - 368 - 10;
 			return (true);
 		}
-		Cpy = Cpy->next;
+		cpy = cpy->next;
 	}
 	return (false);
 }
