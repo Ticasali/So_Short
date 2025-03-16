@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 08:23:00 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/13 01:34:53 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/16 04:43:56 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 bool	valid_char(char c)
 {
-	if (c == '1' || c == '0' || c == 'P' || c == 'E' || c == 'e' || c == 'C')
+	if (c == '1' || c == '0' || c == 'P' || c == 'E' || c == 't' || c == 'C')
 		return (true);
 	return (false);
 }

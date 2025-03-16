@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 14:35:50 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/14 14:10:28 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/16 07:41:09 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*load_img_block(t_Wind *wind, int *pos, bool check, char const *str)
 	int			val;
 	void		*ret;
 
-	path = "./texture/block/";
+	path = "./texture/Block/";
 	map = ft_itoa(pos[2]);
 	if (map == NULL)
 		return (NULL);

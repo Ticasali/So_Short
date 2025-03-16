@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 03:29:40 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/15 11:50:44 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/16 07:57:16 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ bool	ft_move_right(t_Control *ctrl)
 					&& ctrl->ps->ymaxh <= cpy->ymax)))
 		{
 			ctrl->ps->xmaxh = cpy->xmin;
-			ctrl->ps->xminh = ctrl->ps->xmaxh - 32;
+			ctrl->ps->xminh = ctrl->ps->xmaxh - 128;
+			ctrl->ps->x = ctrl->ps->xminh - 368;
 			return (true);
 		}
 		cpy = cpy->next;
@@ -50,7 +51,8 @@ bool	ft_move_left(t_Control *ctrl)
 					&& ctrl->ps->ymaxh <= cpy->ymax)))
 		{
 			ctrl->ps->xminh = cpy->xmax;
-			ctrl->ps->xmaxh = ctrl->ps->xminh + 32;
+			ctrl->ps->xmaxh = ctrl->ps->xminh + 128;
+			ctrl->ps->x = ctrl->ps->xminh - 368;
 			return (true);
 		}
 		cpy = cpy->next;
@@ -65,16 +67,16 @@ bool	ft_move_up(t_Control *ctrl)
 	cpy = ctrl->bls;
 	while (cpy != NULL)
 	{
-		if ((((ctrl->ps->yminh - ctrl->ps->stat->speed) <= cpy->ymax)
-				&& ((ctrl->ps->yminh - ctrl->ps->stat->speed) > cpy->ymin))
+		if ((((ctrl->ps->ymaxh - ctrl->ps->stat->speed) <= cpy->ymax)
+				&& ((ctrl->ps->ymaxh - ctrl->ps->stat->speed) > cpy->ymin))
 			&& ((ctrl->ps->xminh >= cpy->xmin
 					&& ctrl->ps->xminh < cpy->xmax)
 				|| (ctrl->ps->xmaxh > cpy->xmin
 					&& ctrl->ps->xmaxh <= cpy->xmax)))
 		{
 			ctrl->ps->yminh = cpy->ymax;
-			ctrl->ps->ymaxh = ctrl->ps->yminh + 32;
-			ctrl->ps->up = -1;
+			ctrl->ps->ymaxh = ctrl->ps->yminh - 32;
+			ctrl->ps->y = cpy->ymin - 368 - 10;
 			return (true);
 		}
 		cpy = cpy->next;

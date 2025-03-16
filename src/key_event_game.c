@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 00:06:35 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/15 12:01:06 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/16 03:54:13 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,6 @@ int	key_event_game(int keycode, t_Control *ctrl)
 	}
 	if (keycode == XK_Up)
 		key_event_game_up(ctrl);
-	if (keycode == XK_Right)
-	{
-		ctrl->ps->right = true;
-		key_event_game_right(ctrl);
-	}
-	if (keycode == XK_Left)
-	{
-		ctrl->ps->right = false;
-		key_event_game_left(ctrl);
-	}
 	return (0);
 }
 
@@ -46,9 +36,9 @@ void	key_event_game_up(t_Control *ctrl)
 		}
 		if (ft_move_up(ctrl) == 0)
 		{
-			ctrl->ps->yminh -= 1;
-			ctrl->ps->ymaxh -= 1;
-			ctrl->ps->y -= 1;
+			ctrl->ps->yminh -= ctrl->ps->stat->speed;
+			ctrl->ps->ymaxh -= ctrl->ps->stat->speed;
+			ctrl->ps->y -= ctrl->ps->stat->speed;
 		}
 	}
 }

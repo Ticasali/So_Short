@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 10:14:48 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/15 11:01:08 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/16 18:03:49 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,10 @@ typedef struct Play_s
 	int				ymaxh;
 	int				yminh;
 	int				up;
-	int				move;
 	int				up_val;
 	int				yframe;
 	int				xframe;
+	bool			move;
 	bool			left;
 	bool			right;
 	bool			dir;
@@ -108,8 +108,10 @@ typedef struct Enemi_s
 	int				ymax;
 	int				ymin;
 	int				speed;
+	bool			dir;
 	int				yframe;
 	int				xframe;
+	bool			life;
 	void			***imgr;
 	void			***imgl;
 	struct Enemi_s	*next;
@@ -171,7 +173,7 @@ typedef struct Control_s
 	t_Coin	*cs;
 }	t_Control;
 
-t_Enemi	*load_node_enem(t_Control *ctrl, size_t x, size_t y);
+t_Enemi	*load_enemis(t_Wind *wind, t_Map *map);
 
 t_Back	*create_node(t_Wind	*wind, char *path, char *pathp);
 t_Back	*load_back(t_Wind *wind, int ac);
@@ -255,6 +257,7 @@ int		keyboard_input(int keycode, t_Control *ctrl);
 int		keyboard_input_two(int keycode, t_Control *ctrl);
 int		keyboard_input_three(int keycode, t_Control *ctrl);
 int		load_new_game_render(t_Control *ctrl);
+int		button_click(int button, int x, int y, t_Control *ctrl);
 
 bool	add_node_block(t_Wind *wind, t_Block **block, t_Map *map, int *pos);
 bool	load_block_struct(t_Control *ctrl);
@@ -262,8 +265,7 @@ bool	add_back_coin(t_Coin *node, t_Control *ctrl);
 bool	add_node_coin(t_Wind *wind, int *pos, t_Coin **coin);
 bool	load_coin_struct(t_Control *ctrl);
 bool	load_enemis_sprite(t_Wind *wind, t_Enemi *enem);
-bool	add_back_enem(t_Enemi *node, t_Control *ctrl);
-bool	load_enemis(t_Control *ctrl);
+bool	load_enemis_struct(t_Control *ctrl);
 bool	load_font(t_Wind *wind, t_Font *font);
 bool	add_node_map(t_Map **map, size_t id, char **tab);
 bool	load_player(t_Wind *wind, t_Play *play);
@@ -287,6 +289,11 @@ bool	check_map_coin(char **map);
 bool	check_pathfinding(char **map);
 bool	check_parsing(t_Control *ctrl);
 bool	load_data(t_Control *ctrl, int ac, char **av);
+bool	add_node_enem(t_Wind *wind, int *pos, t_Enemi **enem);
+bool	e_move_down(t_Control *ctrl, t_Enemi *en);
+bool	e_move_left(t_Control *ctrl, t_Enemi *en);
+bool	e_move_right(t_Control *ctrl, t_Enemi *en);
+bool	check_block_top(t_Control *ctrl);
 
 void	display_back(t_Control *ctrl);
 void	error(char *str, t_Control *ctrl);
@@ -315,5 +322,27 @@ void	display_block(t_Control *ctrl);
 void	display_coin(t_Control *ctrl);
 void	key_event_game_right(t_Control *ctrl);
 void	key_event_game_left(t_Control *ctrl);
+void	movement(t_Control *ctrl);
+void	gravity(t_Control *ctrl);
+void	display_player_attack(t_Control *ctrl);
+void	display_player_attack_a(t_Control *ctrl);
+void	display_player_attack_s(t_Control *ctrl);
+void	display_player_damage(t_Control *ctrl);
+void	display_player_death(t_Control *ctrl);
+void	display_player_defend(t_Control *ctrl);
+void	display_player_idle(t_Control *ctrl);
+void	display_player_jump(t_Control *ctrl);
+void	display_player_move(t_Control *ctrl);
+void	display_enemis(t_Control *ctrl);
+void	enem_move_down(t_Control *ctrl);
+void	movement_player(t_Control *ctrl);
+void	display_en_attack(t_Control *ctrl, t_Enemi *cpy);
+void	display_en_damage(t_Control *ctrl, t_Enemi *cpy);
+void	display_en_death(t_Control *ctrl, t_Enemi *cpy);
+void	display_en_move(t_Control *ctrl, t_Enemi *cpy);
+void	ia_enemis(t_Control *ctrl, t_Enemi *en);
+void	movement_enemis(t_Control *ctrl);
+void	check_enemis_damage(t_Control *ctrl);
+void	check_enemis_hitbox(t_Control *ctrl, t_Enemi *en);
 
 #endif

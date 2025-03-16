@@ -6,7 +6,7 @@
 #    By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/17 09:27:00 by ticasali          #+#    #+#              #
-#    Updated: 2025/03/15 09:42:08 by ticasali         ###   ########.fr        #
+#    Updated: 2025/03/16 18:04:09 by ticasali         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,16 +15,21 @@ NAME	=	Elaym
 DIR_SRCS =			src
 
 SRCS		=	src/main.c				\
+				src/attack_hitbox.c		\
 				src/background_border.c	\
 				src/background_link.c	\
 				src/background.c		\
+				src/button_click_game.c	\
+				src/check_block_top.c	\
 				src/compare.c			\
 				src/concat_path.c		\
 				src/copy.c				\
 				src/display_back.c		\
 				src/display_block.c		\
 				src/display_coin.c		\
+				src/display_enemis.c	\
 				src/display_player.c	\
+				src/enemis_move.c		\
 				src/error.c				\
 				src/find_player.c		\
 				src/ft_split.c			\
@@ -32,6 +37,8 @@ SRCS		=	src/main.c				\
 				src/game_render.c		\
 				src/game.c				\
 				src/get_time.c			\
+				src/gravity.c			\
+				src/ia_enemis.c			\
 				src/itoa.c				\
 				src/key_event_game.c	\
 				src/key_pressed_game.c	\
@@ -62,11 +69,15 @@ SRCS		=	src/main.c				\
 				src/mlx_reset.c			\
 				src/mouse_event_game.c	\
 				src/move.c				\
+				src/movement.c			\
 				src/parsing_border.c	\
 				src/parsing_char.c		\
 				src/parsing_length.c	\
 				src/parsing_path.c		\
 				src/parsing.c			\
+				src/player_attack.c		\
+				src/player_damage.c		\
+				src/player_move.c		\
 				src/print_char.c		\
 				src/print_number.c		\
 				src/print_string.c		\
