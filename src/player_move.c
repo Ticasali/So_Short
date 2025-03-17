@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 02:49:28 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/16 18:15:33 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/17 20:56:40 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ void	display_player_idle(t_Control *ctrl)
 
 void	display_player_jump(t_Control *ctrl)
 {
+	bool	check;
+
+	check = false;
 	if (ctrl->ps->right == true)
 	{
 		mlx_put_image_to_window(ctrl->ws->ml, ctrl->ws->win,
@@ -52,19 +55,21 @@ void	display_player_jump(t_Control *ctrl)
 	{
 		ctrl->ps->yframe = 6;
 		ctrl->ps->xframe = 0;
+		check = true;
 	}
-	if (ctrl->ps->xframe < 10)
+	if (ctrl->ps->xframe < 10 && check == false)
 	{
-		//if (check_block_top(ctrl) == true)
-	//	{
+		if (ft_move_up(ctrl) == false)
+		{
 			ctrl->ps->y -= ctrl->ps->stat->speed * 4 + 1;
 			ctrl->ps->yminh -= ctrl->ps->stat->speed * 4 + 1;
 			ctrl->ps->ymaxh -= ctrl->ps->stat->speed * 4 + 1;
-	//	}
-	//	else
-	//	{
-	//		ctrl->ps->xframe = 11;
-	//	}
+		}
+		else
+		{
+			ctrl->ps->xframe = 0;
+			ctrl->ps->yframe = 6;
+		}
 	}
 }
 

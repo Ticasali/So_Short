@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 02:48:53 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/16 16:46:54 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/17 22:20:53 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,10 @@ void	display_player_attack_a(t_Control *ctrl)
 	if (ctrl->ps->xframe < 7)
 		++ctrl->ps->xframe;
 	else
-		ctrl->ps->xframe = 0;
+	{
+		ctrl->ps->xframe = 13;
+		ctrl->ps->yframe = 7;
+	}
 }
 
 void	display_player_attack_s(t_Control *ctrl)

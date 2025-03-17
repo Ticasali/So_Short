@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 10:14:48 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/16 18:03:49 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/17 22:07:11 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ typedef struct Coin_s
 	int				xmax;
 	int				ymax;
 	int				frame;
+	bool			life;
 	void			**img;
 	struct Coin_s	*next;
 }	t_Coin;
@@ -162,6 +163,7 @@ typedef struct Control_s
 	size_t	statement;
 	char	*login;
 	char	**save;
+	bool	paral;
 	t_Wind	*ws;
 	t_Map	*ms;
 	t_Block	*bls;

@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 13:18:56 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/15 05:11:06 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/17 22:07:32 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ bool	load_data(t_Control *ctrl, int ac, char **av)
 //	ctrl->save = load_tab("save");
 //	if (ctrl->save == NULL)
 //		return (false);
+	ctrl->paral = false;
 	return (true);
 }
