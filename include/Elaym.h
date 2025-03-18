@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 10:14:48 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/17 22:07:11 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/18 18:16:26 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,6 +164,8 @@ typedef struct Control_s
 	char	*login;
 	char	**save;
 	bool	paral;
+	int		x_dif;
+	int		y_dif;
 	t_Wind	*ws;
 	t_Map	*ms;
 	t_Block	*bls;
@@ -346,5 +348,6 @@ void	ia_enemis(t_Control *ctrl, t_Enemi *en);
 void	movement_enemis(t_Control *ctrl);
 void	check_enemis_damage(t_Control *ctrl);
 void	check_enemis_hitbox(t_Control *ctrl, t_Enemi *en);
+void	load_scroll(t_Control *ctrl);
 
 #endif

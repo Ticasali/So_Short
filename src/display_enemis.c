@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 04:47:12 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/16 16:58:17 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/18 18:20:07 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	display_en_attack(t_Control *ctrl, t_Enemi *cpy)
 	{
 		mlx_put_image_to_window(ctrl->ws->ml, ctrl->ws->win,
 			cpy->imgl[cpy->yframe][cpy->xframe],
-			cpy->xmin, cpy->ymax);
+			cpy->xmin - ctrl->x_dif, cpy->ymax- ctrl->y_dif);
 		if (cpy->xframe < 5)
 			++cpy->xframe;
 		else
@@ -47,7 +47,7 @@ void	display_en_attack(t_Control *ctrl, t_Enemi *cpy)
 	{
 		mlx_put_image_to_window(ctrl->ws->ml, ctrl->ws->win,
 			cpy->imgr[cpy->yframe][cpy->xframe],
-			cpy->xmin, cpy->ymax);
+			cpy->xmin - ctrl->x_dif, cpy->ymax- ctrl->y_dif);
 		if (cpy->xframe < 5)
 			++cpy->xframe;
 		else
@@ -61,7 +61,7 @@ void	display_en_damage(t_Control *ctrl, t_Enemi *cpy)
 	{
 		mlx_put_image_to_window(ctrl->ws->ml, ctrl->ws->win,
 			cpy->imgl[cpy->yframe][cpy->xframe],
-			cpy->xmin, cpy->ymax);
+			cpy->xmin - ctrl->x_dif, cpy->ymax- ctrl->y_dif);
 		if (cpy->xframe < 4)
 			++cpy->xframe;
 		else
@@ -71,7 +71,7 @@ void	display_en_damage(t_Control *ctrl, t_Enemi *cpy)
 	{
 		mlx_put_image_to_window(ctrl->ws->ml, ctrl->ws->win,
 			cpy->imgr[cpy->yframe][cpy->xframe],
-			cpy->xmin, cpy->ymax);
+			cpy->xmin- ctrl->x_dif, cpy->ymax- ctrl->y_dif);
 		if (cpy->xframe < 4)
 			++cpy->xframe;
 		else
@@ -85,7 +85,7 @@ void	display_en_death(t_Control *ctrl, t_Enemi *cpy)
 	{
 		mlx_put_image_to_window(ctrl->ws->ml, ctrl->ws->win,
 			cpy->imgl[cpy->yframe][cpy->xframe],
-			cpy->xmin, cpy->ymax);
+			cpy->xmin - ctrl->x_dif, cpy->ymax- ctrl->y_dif);
 		if (cpy->xframe < 5)
 			++cpy->xframe;
 		else
@@ -97,7 +97,7 @@ void	display_en_death(t_Control *ctrl, t_Enemi *cpy)
 	{
 		mlx_put_image_to_window(ctrl->ws->ml, ctrl->ws->win,
 			cpy->imgr[cpy->yframe][cpy->xframe],
-			cpy->xmin, cpy->ymax);
+			cpy->xmin - ctrl->x_dif, cpy->ymax- ctrl->y_dif);
 		if (cpy->xframe < 5)
 			++cpy->xframe;
 		else
@@ -113,7 +113,7 @@ void	display_en_move(t_Control *ctrl, t_Enemi *cpy)
 	{
 		mlx_put_image_to_window(ctrl->ws->ml, ctrl->ws->win,
 			cpy->imgl[cpy->yframe][cpy->xframe],
-			cpy->xmin, cpy->ymax);
+			cpy->xmin - ctrl->x_dif, cpy->ymax- ctrl->y_dif);
 		if (cpy->xframe < 4)
 			++cpy->xframe;
 		else
@@ -123,7 +123,7 @@ void	display_en_move(t_Control *ctrl, t_Enemi *cpy)
 	{
 		mlx_put_image_to_window(ctrl->ws->ml, ctrl->ws->win,
 			cpy->imgr[cpy->yframe][cpy->xframe],
-			cpy->xmin, cpy->ymax);
+			cpy->xmin - ctrl->x_dif, cpy->ymax- ctrl->y_dif);
 		if (cpy->xframe < 4)
 			++cpy->xframe;
 		else

@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 05:56:58 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/17 22:23:11 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/18 18:01:51 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	game_render(t_Control *ctrl)
 	if ((time - 0.05) > ctrl->mes->time)
 	{
 		ctrl->mes->time = time;
+		load_scroll(ctrl);
 		gravity(ctrl);
 		movement(ctrl);
 		display_back(ctrl);

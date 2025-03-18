@@ -6,7 +6,7 @@
 #    By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/17 09:27:00 by ticasali          #+#    #+#              #
-#    Updated: 2025/03/17 22:23:26 by ticasali         ###   ########.fr        #
+#    Updated: 2025/03/18 18:05:57 by ticasali         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,6 +81,7 @@ SRCS		=	src/main.c				\
 				src/print_char.c		\
 				src/print_number.c		\
 				src/print_string.c		\
+				src/scrolling.c			\
 				src/setup_game.c		\
 				src/transparency.c		\
 			

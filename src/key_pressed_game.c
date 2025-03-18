@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 02:49:26 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/17 22:08:49 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/18 16:02:40 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	key_pressed_game(int keycode, t_Control *ctrl)
 	}
 	if (ctrl->ps->yframe != 2)
 	{
-		if (keycode == XK_Left || keycode == XK_Right)
+		if (keycode == XK_a || keycode == XK_d)
 		{
 			if (ctrl->ps->yframe == 6)
 			{
@@ -31,7 +31,7 @@ int	key_pressed_game(int keycode, t_Control *ctrl)
 			}
 			if (ctrl->ps->yframe != 0 && ctrl->ps->yframe != 2)
 			{
-				if (keycode == XK_Left)
+				if (keycode == XK_a)
 				{
 					ctrl->ps->move = true;
 					ctrl->ps->dir = false;
@@ -39,7 +39,7 @@ int	key_pressed_game(int keycode, t_Control *ctrl)
 					if (ctrl->ps->right == true)
 						ctrl->ps->right = false;
 				}
-				else if (keycode == XK_Right)
+				else if (keycode == XK_d)
 				{
 					ctrl->ps->move = true;
 					ctrl->ps->dir = true;
@@ -49,7 +49,7 @@ int	key_pressed_game(int keycode, t_Control *ctrl)
 				}
 			}
 		}
-		if (keycode == XK_Up)
+		if (keycode == XK_w)
 		{
 			ctrl->ps->up = 1;
 			ctrl->ps->xframe = 0;
