@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 03:36:21 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/17 22:16:42 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/19 12:25:20 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,13 @@ int	button_click(int button, int x, int y, t_Control *ctrl)
 		ctrl->ps->xframe = 0;
 		ctrl->ps->yframe = 2;
 		ctrl->ps->move = false;
+	}
+	if (button == 2)
+	{
+		if (ctrl->ps->player == true)
+			ctrl->ps->player = false;
+		else
+			ctrl->ps->player = true;
 	}
 	return (0);
 }

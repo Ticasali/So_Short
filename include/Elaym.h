@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 10:14:48 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/18 18:16:26 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/19 12:14:25 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,11 +94,13 @@ typedef struct Play_s
 	bool			left;
 	bool			right;
 	bool			dir;
+	bool			player;
+	int				**frame;
 	void			***imgr;
 	void			***imgl;
+	void			***img_r;
+	void			***img_l;
 	t_Stat			*stat;
-	struct Play_s	*next;
-	struct Play_s	*prev;
 }	t_Play;
 
 typedef struct Enemi_s
@@ -157,6 +159,13 @@ typedef struct Font_s
 	void	**imgfont;
 	void	**imgfontn;
 }	t_Font;
+
+typedef	struct Inter_s
+{
+	void	*water;
+	void	*fire;
+	void	*banner;
+}	t_Inter;
 
 typedef struct Control_s
 {

@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 04:45:24 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/18 18:08:32 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/19 12:27:25 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ void	display_player(t_Control *ctrl)
 	if (ctrl->ps->yframe == 8)
 		display_player_move(ctrl);
 }
+
+
+
 /*
 	if (ctrl->ps->right == true)
 	{

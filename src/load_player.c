@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 16:51:55 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/17 20:09:35 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/19 12:14:20 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,21 @@ bool	load_player(t_Wind *wind, t_Play *play)
 {
 	play->yframe = 6;
 	play->xframe = 0;
+	play->player = true;
 	play->imgr = load_player_animation(wind, true);
 	if (play->imgr == NULL)
 		return (false);
 	play->imgl = load_player_animation(wind, false);
 	if (play->imgl == NULL)
+		return (false);
+	play->img_r = load_player_animation_bis(wind, true);
+	if (play->imgr == NULL)
+		return (false);
+	play->img_l = load_player_animation_bis(wind, false);
+	if (play->imgl == NULL)
+		return (false);
+	play->frame = load_frame_player();
+	if (play->frame == NULL)
 		return (false);
 	return (true);
 }
