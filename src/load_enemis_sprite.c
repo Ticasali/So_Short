@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 02:36:39 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/16 16:52:07 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/24 09:36:35 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,19 @@ void	***load_enem_animation(t_Wind *wind, bool check)
 	if (ret == NULL)
 		return (NULL);
 	ret[0] = load_enem_sprite(wind, check,
-			"./texture/enemis/tree/Attack/attack", 6);
+			"./texture/enemis/Tree/Attack/attack", 6);
 	if (ret[0] == NULL)
 		return (NULL);
 	ret[1] = load_enem_sprite(wind, check,
-			"./texture/enemis/tree/Damage/damage", 5);
+			"./texture/enemis/Tree/Damage/damage", 5);
 	if (ret[1] == NULL)
 		return (NULL);
 	ret[2] = load_enem_sprite(wind, check,
-			"./texture/enemis/tree/Death/death", 6);
+			"./texture/enemis/Tree/Death/death", 6);
 	if (ret[2] == NULL)
 		return (NULL);
 	ret[3] = load_enem_sprite(wind, check,
-			"./texture/enemis/tree/Move/move", 5);
+			"./texture/enemis/Tree/Move/move", 5);
 	if (ret[3] == NULL)
 		return (NULL);
 	return (ret);

@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 05:56:58 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/18 18:01:51 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/25 16:52:11 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,22 @@ int	game_render(t_Control *ctrl)
 	double	time;
 
 	time = get_time();
-	if ((time - 0.05) > ctrl->mes->time)
+	if ((time - 0.01) > ctrl->mes->time)
 	{
 		ctrl->mes->time = time;
+		reset_window(ctrl);
 		load_scroll(ctrl);
 		gravity(ctrl);
 		movement(ctrl);
-		display_back(ctrl);
-		display_player(ctrl);
-		display_coin(ctrl);
 		display_enemis(ctrl);
 		display_block(ctrl);
+		display_coin(ctrl);
+		display_player(ctrl);
+		display_back(ctrl);
+//		display_player(ctrl);
+//		display_coin(ctrl);
+//		display_enemis(ctrl);
+//		display_block(ctrl);
 	}
 	return (0);
 }

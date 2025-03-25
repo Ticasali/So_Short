@@ -6,7 +6,7 @@
 #    By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/17 09:27:00 by ticasali          #+#    #+#              #
-#    Updated: 2025/03/19 01:20:42 by ticasali         ###   ########.fr        #
+#    Updated: 2025/03/25 21:00:29 by ticasali         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRCS		=	src/main.c				\
 				src/game.c				\
 				src/get_time.c			\
 				src/gravity.c			\
+				src/hitbox_coin.c		\
 				src/ia_enemis.c			\
 				src/itoa.c				\
 				src/key_event_game.c	\
@@ -81,8 +82,10 @@ SRCS		=	src/main.c				\
 				src/print_char.c		\
 				src/print_number.c		\
 				src/print_string.c		\
+				src/reset_window.c		\
 				src/scrolling.c			\
 				src/setup_game.c		\
+				src/transparency_play.c	\
 				src/transparency.c		\
 			
 DIR_OBJS =			.objs
@@ -90,7 +93,7 @@ OBJS =				$(SRCS:$(DIR_SRCS)/%.c=$(DIR_OBJS)/%.o)
 
 CC	=	cc
 
-CFLAGS	= -Wextra -Wall -Werror -g3
+CFLAGS	= -Wextra -Wall -Werror -O2
 
 all:	$(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 00:06:35 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/16 03:54:13 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/24 18:24:23 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ void	key_event_game_up(t_Control *ctrl)
 			ctrl->ps->y -= ctrl->ps->stat->speed;
 		}
 	}
+	hitbox_coin_right(ctrl);
+	hitbox_coin_left(ctrl);
 }
 
 void	key_event_game_right(t_Control *ctrl)
@@ -51,6 +53,7 @@ void	key_event_game_right(t_Control *ctrl)
 		ctrl->ps->xmaxh += ctrl->ps->stat->speed;
 		ctrl->ps->x += ctrl->ps->stat->speed;
 	}
+	hitbox_coin_right(ctrl);
 }
 
 void	key_event_game_left(t_Control *ctrl)
@@ -61,4 +64,5 @@ void	key_event_game_left(t_Control *ctrl)
 		ctrl->ps->xmaxh -= ctrl->ps->stat->speed;
 		ctrl->ps->x -= ctrl->ps->stat->speed;
 	}
+	hitbox_coin_left(ctrl);
 }

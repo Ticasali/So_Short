@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 10:14:48 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/19 12:14:25 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/25 15:56:48 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,11 +95,8 @@ typedef struct Play_s
 	bool			right;
 	bool			dir;
 	bool			player;
-	int				**frame;
 	void			***imgr;
 	void			***imgl;
-	void			***img_r;
-	void			***img_l;
 	t_Stat			*stat;
 }	t_Play;
 
@@ -179,6 +176,7 @@ typedef struct Control_s
 	t_Map	*ms;
 	t_Block	*bls;
 	t_Play	*ps;
+	t_Play	*bs;
 	t_Enemi	*es;
 	t_Back	*bas;
 	t_Menu	*mes;
@@ -355,8 +353,15 @@ void	display_en_death(t_Control *ctrl, t_Enemi *cpy);
 void	display_en_move(t_Control *ctrl, t_Enemi *cpy);
 void	ia_enemis(t_Control *ctrl, t_Enemi *en);
 void	movement_enemis(t_Control *ctrl);
-void	check_enemis_damage(t_Control *ctrl);
-void	check_enemis_hitbox(t_Control *ctrl, t_Enemi *en);
+void	check_enemis_damage(t_Control *ctrl, int range);
+void	check_enemis_hitbox(t_Control *ctrl, t_Enemi *en, int range);
 void	load_scroll(t_Control *ctrl);
+void	reset_window(t_Control *ctrl);
+void	put_img_to_img_play(t_Trspy dst, t_Trspy src, int x, int y);
+void	put_pixel_img_play(t_Trspy img, int x, int y, int color);
+void	hitbox_coin_right(t_Control *ctrl);
+void	hitbox_coin_left(t_Control *ctrl);
+void	hitbox_coin_up(t_Control *ctrl);
+void	hitbox_coin_down(t_Control *ctrl);
 
 #endif

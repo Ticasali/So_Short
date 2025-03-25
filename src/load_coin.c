@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 04:08:13 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/17 20:22:19 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/24 16:52:51 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ bool	add_node_coin(t_Wind *wind, int *pos, t_Coin **coin)
 	node->ymax = 64 * pos[0] + 64;
 	node->xmin = 64 * pos[1];
 	node->ymin = 64 * pos[0];
-	node->life = false;
+	node->life = true;
 	node->next = NULL;
 	if (pos[2] == 0)
 	{

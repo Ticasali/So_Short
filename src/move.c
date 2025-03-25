@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 03:29:40 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/18 17:58:06 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/24 07:50:26 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ bool	ft_move_up(t_Control *ctrl)
 	cpy = ctrl->bls;
 	while (cpy != NULL)
 	{
-		if ((((ctrl->ps->yminh - (ctrl->ps->stat->speed * 4) - 94) <= cpy->ymax)
+		if ((((ctrl->ps->yminh - (ctrl->ps->stat->speed * 4)) <= cpy->ymax)
 				&& ((ctrl->ps->yminh - (ctrl->ps->stat->speed * 4)) > cpy->ymin))
 			&& ((ctrl->ps->xminh >= cpy->xmin
 					&& ctrl->ps->xminh < cpy->xmax)
@@ -99,7 +99,7 @@ bool	ft_move_down(t_Control *ctrl)
 					&& ctrl->ps->xmaxh <= cpy->xmax)))
 		{
 			ctrl->ps->ymaxh = cpy->ymin;
-			ctrl->ps->yminh = ctrl->ps->ymaxh - 32;
+			ctrl->ps->yminh = ctrl->ps->ymaxh - 128;
 			ctrl->ps->y = cpy->ymin - 368 - 10;
 			return (true);
 		}

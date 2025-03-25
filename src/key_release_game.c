@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 02:50:19 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/19 12:23:58 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/24 16:18:12 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,13 @@ int	key_release_game(int keycode, t_Control *ctrl)
 {
 	if (keycode == XK_s)
 	{
-		if (ctrl->paral == false)
-			ctrl->paral = true;
-		else if (ctrl->paral == true)
-			ctrl->paral = false;
+		if (ctrl->ps->yframe != 5)
+		{
+			ctrl->ps->yframe = 5;
+			ctrl->ps->xframe = 0;
+		}
 	}
-	if (ctrl->ps->yframe != 2 && ctrl->ps->yframe != 0)
+	if (ctrl->ps->yframe != 2 && ctrl->ps->yframe != 0 && ctrl->ps->yframe != 5)
 	{
 		if (keycode == XK_a)
 		{
