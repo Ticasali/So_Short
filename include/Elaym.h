@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 10:14:48 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/25 15:56:48 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/26 15:53:06 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,6 +194,7 @@ t_Coin	*load_coin(t_Wind *wind, t_Map *map);
 t_Menu	*load_menu_struct(t_Wind *wind);
 
 t_Stat	*load_stat(void);
+t_Stat	*load_stat_boss(void);
 
 t_Trspy	load_transparency(void *ptr, int x, int y);
 
@@ -207,6 +208,8 @@ void	***load_button_menu(t_Wind *wind);
 void	***load_enem_animation(t_Wind *wind, bool check);
 void	***load_animation_player(t_Wind *wind, bool check, void ***ret);
 void	***load_player_animation(t_Wind *wind, bool check);
+void	***load_boss_animation(t_Wind *wind, bool check);
+void	***load_animation_boss(t_Wind *wind, bool check, void ***ret);
 
 void	**load_button_menu_sprite(t_Wind *wind, char const *path, int sprite);
 void	**load_coin_sprite(t_Wind *wind);
@@ -249,6 +252,7 @@ double	get_time(void);
 size_t	get_pixel_img(t_Trspy tr, int x, int y);
 
 size_t	find_player(char **map, bool check);
+size_t	find_boss(char **map, bool check);
 size_t	ft_count_words(char *str, char c);
 size_t	ft_allocated_value(int n);
 size_t	ft_strlen(char const *str);
@@ -305,6 +309,10 @@ bool	e_move_down(t_Control *ctrl, t_Enemi *en);
 bool	e_move_left(t_Control *ctrl, t_Enemi *en);
 bool	e_move_right(t_Control *ctrl, t_Enemi *en);
 bool	check_block_top(t_Control *ctrl);
+bool	boss_move_down(t_Control *ctrl);
+bool	boss_move_left(t_Control *ctrl);
+bool	boss_move_right(t_Control *ctrl);
+bool	load_boss(t_Wind *wind, t_Play *play);
 
 void	display_back(t_Control *ctrl);
 void	error(char *str, t_Control *ctrl);
@@ -363,5 +371,10 @@ void	hitbox_coin_right(t_Control *ctrl);
 void	hitbox_coin_left(t_Control *ctrl);
 void	hitbox_coin_up(t_Control *ctrl);
 void	hitbox_coin_down(t_Control *ctrl);
+void	load_pos_boss(t_Control *ctrl);
+void	ia_boss(t_Control *ctrl);
+void	display_boss(t_Control *ctrl);
+void	display_boss_move(t_Control *ctrl);
+void	display_boss_idle(t_Control *ctrl);
 
 #endif

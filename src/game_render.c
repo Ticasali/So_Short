@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 05:56:58 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/25 16:52:11 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/26 15:29:24 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	game_render(t_Control *ctrl)
 		display_enemis(ctrl);
 		display_block(ctrl);
 		display_coin(ctrl);
+		display_boss(ctrl);
 		display_player(ctrl);
 		display_back(ctrl);
 //		display_player(ctrl);

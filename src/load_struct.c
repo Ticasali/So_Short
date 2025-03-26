@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 13:18:56 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/19 12:26:03 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/26 15:40:15 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,19 @@ bool	load_data(t_Control *ctrl, int ac, char **av)
 {
 	t_Wind	*wind;
 	t_Play	*play;
+	t_Play	*boss;
 	t_Font	*font;
 
 	wind = malloc(sizeof(t_Wind));
 	play = malloc(sizeof(t_Play));
 	font = malloc(sizeof(t_Font));
-	if (wind == NULL || play == NULL)
+	boss = malloc(sizeof(t_Play));
+	if (wind == NULL || play == NULL || boss == NULL)
 		return (false);
 	ctrl->ws = wind;
 	ctrl->ps = play;
 	ctrl->fs = font;
+	ctrl->bs = boss;
 	ctrl->ms = load_map(ac, av);
 	if (ctrl->ms == NULL)
 		write(1, "m", 1);
@@ -33,9 +36,11 @@ bool	load_data(t_Control *ctrl, int ac, char **av)
 		write(1, "w", 1);
 	if (load_player(wind, play) == false)
 		write(1, "p", 1);
+	if (load_boss(wind, boss) == false)
+		write(1, "b", 1);
 	if (load_font(wind, font) == false)
 		write(1, "f", 1);
-	if (wind == NULL || play == NULL)
+	if (wind == NULL || play == NULL || boss == NULL)
 	{
 		write(1, "a", 1);
 	}

@@ -6,7 +6,7 @@
 #    By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/17 09:27:00 by ticasali          #+#    #+#              #
-#    Updated: 2025/03/25 21:00:29 by ticasali         ###   ########.fr        #
+#    Updated: 2025/03/26 15:07:31 by ticasali         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,12 @@ SRCS		=	src/main.c				\
 				src/background_border.c	\
 				src/background_link.c	\
 				src/background.c		\
+				src/boss_attack.c		\
+				src/boss_damage.c		\
+				src/boss_ia_move.c		\
+				src/boss_ia.c			\
+				src/boss_move.c			\
+				src/boss.c				\
 				src/button_click_game.c	\
 				src/check_block_top.c	\
 				src/compare.c			\
@@ -26,6 +32,7 @@ SRCS		=	src/main.c				\
 				src/copy.c				\
 				src/display_back.c		\
 				src/display_block.c		\
+				src/display_boss.c		\
 				src/display_coin.c		\
 				src/display_enemis.c	\
 				src/display_player.c	\
@@ -48,6 +55,7 @@ SRCS		=	src/main.c				\
 				src/length.c			\
 				src/load_back.c			\
 				src/load_block.c		\
+				src/load_boss_pos.c		\
 				src/load_button.c		\
 				src/load_coin_sprite.c	\
 				src/load_coin.c			\

@@ -6,7 +6,7 @@
 /*   By: ticasali <ticasali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 03:14:00 by ticasali          #+#    #+#             */
-/*   Updated: 2025/03/16 16:44:06 by ticasali         ###   ########.fr       */
+/*   Updated: 2025/03/26 15:01:43 by ticasali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	movement(t_Control *ctrl)
 {
 	movement_player(ctrl);
 	movement_enemis(ctrl);
+	ia_boss(ctrl);
 }
 
 void	movement_player(t_Control *ctrl)
